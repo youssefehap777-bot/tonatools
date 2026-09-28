@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://youssefehap777-bot.github.io/tonatools/sitemap.xml
