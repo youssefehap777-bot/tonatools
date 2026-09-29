@@ -6,6 +6,8 @@
  <title>TonaTools – Free Online Image, PDF & File Tools</title>
  <meta name="description" content="TonaTools is a free online toolkit for compressing, resizing and converting images, working with PDFs, text and files directly in your browser.">
  <meta name="robots" content="index, follow">
+ <meta name="theme-color" content="#0b1020">
+ <meta name="referrer" content="strict-origin-when-cross-origin">
  <link rel="canonical" href="https://youssefehap777-bot.github.io/tonatools/">
  <link rel="icon" type="image/png" href="favicon.png">
  <meta property="og:title" content="TonaTools — Free Online File Tools">
@@ -21,10 +23,12 @@
 :root{--bg:#0b1020;--card:#121a2d;--card2:#0f1728;--text:#f5f7ff;--muted:#aab4cc;--accent:#7c5cff;--accent2:#19c7a5;--border:#25304a;--danger:#ff647c}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(circle at 15% 0%,#202a55 0,transparent 34%),radial-gradient(circle at 90% 10%,#123e4b 0,transparent 28%),var(--bg);color:var(--text);min-height:100vh}
 header{max-width:1200px;margin:auto;padding:20px;display:flex;justify-content:space-between;align-items:center;gap:15px}.brand{font-size:27px;font-weight:900;display:flex;align-items:center;gap:8px}.brand-mark{width:32px;height:32px;display:inline-flex;color:var(--accent2)}.brand-mark svg{width:100%;height:100%}.brand span{color:var(--accent2)}select, input, textarea{font:inherit}select{background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:10px;padding:9px 12px}
+.site-nav{max-width:1200px;margin:0 auto;padding:0 20px 8px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}.site-nav a{color:var(--text);background:#17213a;border:1px solid #405071;border-radius:10px;padding:8px 12px;text-decoration:none;font-weight:700;font-size:13px}.site-nav a:hover,.site-nav a:focus{border-color:var(--accent);outline:none}.skip-link{position:absolute;left:-9999px;top:auto}.skip-link:focus{left:12px;top:12px;z-index:1000;background:#fff;color:#111;padding:10px 14px;border-radius:8px}.info-section{max-width:900px;margin:30px auto;padding:24px 20px;border:1px solid var(--border);background:rgba(18,26,45,.72);border-radius:16px;scroll-margin-top:20px}.info-section h2{margin:0 0 10px;font-size:25px}.info-section h3{margin:20px 0 7px}.info-section p,.info-section li{color:#d4daea;line-height:1.7}.info-section ul{padding-inline-start:22px}.info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.info-card{padding:16px;border:1px solid var(--border);border-radius:13px;background:#0f1728}.info-card strong{display:block;margin-bottom:5px}.contact-link{color:#dcd7ff;font-weight:800}.legal-note{font-size:13px;color:var(--muted)}
+
 main{max-width:1200px;margin:20px auto;padding:0 20px 45px}.hero{text-align:center;padding:38px 0 25px}.hero h1{font-size:clamp(38px,7vw,68px);margin:0 0 14px;letter-spacing:-2px}.hero p{color:var(--muted);font-size:18px;margin:0 auto;max-width:760px;line-height:1.6}.notice{margin:20px auto 30px;max-width:900px;border:1px solid #30405e;background:#111b31;border-radius:14px;padding:12px 16px;color:var(--muted);font-size:14px;text-align:center}
-.seo-content{max-width:900px;margin:0 auto 30px;padding:22px 20px;border:1px solid var(--border);background:rgba(18,26,45,.72);border-radius:16px}.seo-content h2{margin:0 0 8px;font-size:24px}.seo-content p{margin:7px 0;color:var(--muted);line-height:1.6}
-.categories{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:20px 0 30px}.cat{padding:10px 14px;border:1px solid var(--border);background:#11192b;color:var(--text);border-radius:12px;cursor:pointer;font-weight:700}.cat.active{background:var(--accent);border-color:var(--accent)}
-.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:14px;margin-bottom:28px}.tool{background:rgba(18,26,45,.9);border:1px solid var(--border);border-radius:18px;padding:18px;text-align:start;cursor:pointer;transition:.18s}.tool:hover{transform:translateY(-2px);border-color:#53648d}.tool.active{border-color:var(--accent);box-shadow:0 0 0 1px #7c5cff44}.tool .icon{font-size:28px}.tool h3{margin:8px 0 5px;font-size:17px}.tool p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
+.seo-content{max-width:900px;margin:0 auto 30px;padding:22px 20px;border:1px solid var(--border);background:rgba(18,26,45,.72);border-radius:16px}.seo-content h2{margin:0 0 8px;font-size:24px}.seo-content p{margin:7px 0;color:#c8d0e2;line-height:1.6}
+.categories{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:20px 0 30px}.cat{padding:10px 14px;border:1px solid var(--border);background:#11192b;color:var(--text);border-radius:12px;cursor:pointer;font-weight:700}.cat.active{background:#8f7aff;border-color:#b1a4ff;color:#0b1020}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:14px;margin-bottom:28px}.tool{background:rgba(18,26,45,.9);border:1px solid var(--border);border-radius:18px;padding:18px;text-align:start;cursor:pointer;transition:.18s}.tool:hover{transform:translateY(-2px);border-color:#53648d}.tool:focus{outline:2px solid #b1a4ff;outline-offset:2px}.tool.active{border-color:var(--accent);box-shadow:0 0 0 1px #7c5cff44}.tool .icon{font-size:28px}.tool h3{margin:8px 0 5px;font-size:17px}.tool p{margin:0;color:#c8d0e2;font-size:13px;line-height:1.45}
 .workspace{background:rgba(18,26,45,.95);border:1px solid var(--border);border-radius:22px;padding:25px;box-shadow:0 20px 70px #0005}.workspace h2{margin:0 0 7px}.workspace>p{color:var(--muted);margin-top:0}.drop{border:2px dashed #425174;border-radius:18px;padding:45px 20px;text-align:center;cursor:pointer;transition:.2s;margin:20px 0}.drop:hover,.drop.drag{border-color:var(--accent);background:#7c5cff0d}.drop strong{display:block;font-size:20px;margin-bottom:7px}.drop small{color:var(--muted)}input[type=file]{display:none}
 .controls{display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;margin:18px 0}.field{display:flex;gap:8px;align-items:center;flex-wrap:wrap;color:var(--muted)}input[type=number],input[type=text],input[type=color],input[type=range],textarea{background:#0b1222;color:var(--text);border:1px solid var(--border);border-radius:9px;padding:9px}input[type=number],input[type=text]{width:155px}input[type=color]{padding:3px;width:55px;height:38px}input[type=range]{accent-color:var(--accent);padding:0;width:180px}button,.download{border:0;border-radius:11px;padding:11px 17px;background:var(--accent);color:white;font-weight:800;cursor:pointer;text-decoration:none;display:inline-block}button.secondary{background:#25304a}button.danger{background:#5a2431}button:disabled{opacity:.45;cursor:not-allowed}.options{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:center}.check{color:var(--muted)}
 .results{margin-top:22px}.item{display:flex;gap:14px;align-items:center;padding:14px;border:1px solid var(--border);border-radius:14px;margin-top:10px;background:#0f1728}.thumb{width:68px;height:68px;object-fit:cover;border-radius:10px;background:#0a1020}.info{flex:1;min-width:0}.name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:13px;color:var(--muted);margin-top:5px;line-height:1.45}.preview{display:block;max-width:100%;max-height:420px;margin:18px auto;border-radius:12px}.status{margin:15px 0;padding:12px;border-radius:10px;background:#0b1222;color:var(--muted);text-align:center}.progress-wrap{margin:15px 0;padding:12px;border-radius:12px;background:#0b1222;border:1px solid var(--border)}.progress-label{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:13px;margin-bottom:8px}.progress-track{height:12px;background:#1a2236;border-radius:999px;overflow:hidden}.progress-fill{height:100%;width:0;background:var(--accent);border-radius:999px;transition:width .12s linear}.status.ok{border:1px solid #1b7d69}.small{font-size:12px;color:var(--muted)}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.text-area{width:100%;min-height:220px;resize:vertical;font-family:inherit;line-height:1.55}.hidden{display:none!important}footer{text-align:center;color:var(--muted);padding:25px 20px;font-size:13px}
@@ -32,8 +36,13 @@ main{max-width:1200px;margin:20px auto;padding:0 20px 45px}.hero{text-align:cent
  </style>
 </head>
 <body>
+<a class="skip-link" href="#tools">Skip to tools</a>
 <header><div class="brand"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 36 36" role="img"><rect x="1" y="1" width="34" height="34" rx="10" fill="currentColor" opacity=".12"/><path d="M9 10h18v5h-6.5v12h-5V15H9z" fill="currentColor"/></svg></span>Tona<span>Tools</span></div><select id="lang" aria-label="Language"></select></header>
+<nav class="site-nav" aria-label="Site navigation">
+<a href="#home">Home</a><a href="#tools">Tools</a><a href="#about">About</a><a href="#account">Account</a><a href="#faq">FAQ</a><a href="#privacy">Privacy</a><a href="#cookies">Cookies</a><a href="#terms">Terms</a><a href="#contact">Contact</a>
+</nav>
 <main>
+<section id="home" aria-label="Home">
 <section class="hero"><h1 id="title"></h1><p id="subtitle"></p></section>
 <div class="notice" id="notice"></div>
 <section class="seo-content" aria-label="TonaTools online file tools">
@@ -41,11 +50,75 @@ main{max-width:1200px;margin:20px auto;padding:0 20px 45px}.hero{text-align:cent
 <p>TonaTools provides free browser-based tools for compressing, resizing and converting images, working with video and audio, creating and managing PDFs, and processing text and files.</p>
 <p>Your files are processed on your device whenever possible, with no signup required for the core tools.</p>
 </section>
+</section>
+
 <div class="categories" id="categories"></div>
 <div class="tools" id="tools"></div>
 <section class="workspace" id="workspace"></section>
+
+<section class="info-section" id="about">
+<h2>About TonaTools</h2>
+<p>TonaTools is a free browser-based toolkit for common image, video, audio, PDF, text and file tasks. The goal is to make useful file tools simple, fast and accessible without requiring an account for the core features.</p>
+<div class="info-grid">
+<div class="info-card"><strong>Privacy first</strong><span>Files are processed on your device whenever the selected tool supports local processing.</span></div>
+<div class="info-card"><strong>No signup for core tools</strong><span>You can use the main tools without creating an account.</span></div>
+<div class="info-card"><strong>Browser based</strong><span>Open TonaTools on a modern browser and work directly from the website.</span></div>
+<div class="info-card"><strong>Free to use</strong><span>The core toolkit is provided without a subscription or required payment.</span></div>
+</div>
+</section>
+
+<section class="info-section" id="account">
+<h2>Account</h2>
+<p>TonaTools does not require an account for its core tools. Google Sign-In is optional and can be enabled when a Google OAuth client ID is configured for this website.</p>
+<div id="google-signin-area" class="info-card">
+<strong>Google Sign-In</strong>
+<p class="legal-note">The core site works without login. To activate Google Sign-In, a Google Identity Services OAuth client ID must be created for this exact website origin and inserted into the configuration below.</p>
+<button type="button" id="google-signin-placeholder" class="secondary" disabled>Google Sign-In — optional setup</button>
+</div>
+</section>
+
+<section class="info-section" id="faq">
+<h2>Frequently asked questions</h2>
+<h3>Do I need an account?</h3><p>No. The core TonaTools features are designed to work without signup.</p>
+<h3>Are my files uploaded?</h3><p>Many tools process files locally in your browser. Some advanced tools may load browser libraries or models when required. The tool itself indicates what it needs.</p>
+<h3>Why can a conversion depend on my browser?</h3><p>Some media formats depend on browser APIs such as MediaRecorder. TonaTools only offers browser-supported output options where possible.</p>
+<h3>Is TonaTools free?</h3><p>The core tools are free to use. Any future third-party services or optional features will be identified clearly.</p>
+</section>
+
+<section class="info-section" id="privacy">
+<h2>Privacy Policy</h2>
+<p>Last updated: September 2026.</p>
+<p>TonaTools is designed to process files locally in the browser whenever a tool can do so. TonaTools does not require an account to use its core tools.</p>
+<h3>Files and personal information</h3><p>Do not upload sensitive or confidential files unless you understand how the selected browser feature processes them. TonaTools does not intentionally collect the contents of files for its core local-processing tools.</p>
+<h3>Third-party resources</h3><p>Some tools may load open-source browser libraries or other third-party resources to perform a requested task. Your browser may contact those providers when such resources are loaded.</p>
+<h3>Analytics and advertising</h3><p>The current core site does not require cookies for its main tools. If advertising or analytics services are added later, this policy will be updated to explain the relevant data practices and choices.</p>
+<h3>Your choices</h3><p>You can stop using the site at any time and can clear browser data using your browser's controls.</p>
+</section>
+
+<section class="info-section" id="cookies">
+<h2>Cookie Policy</h2>
+<p>TonaTools core tools do not require cookies to process your files. Your browser may still store normal technical data such as cached website resources or local browser preferences.</p>
+<p>If advertising, analytics or other third-party services are added in the future, this section will be updated to explain their use of cookies or similar technologies and any available choices.</p>
+</section>
+
+<section class="info-section" id="terms">
+<h2>Terms of Use</h2>
+<p>By using TonaTools, you agree to use the site lawfully and responsibly.</p>
+<h3>Use of the tools</h3><p>You are responsible for the files you process and for ensuring that you have the right to use or modify them. Do not use the service for unlawful activity.</p>
+<h3>Output and availability</h3><p>Browser capabilities vary by device and browser. Results may differ between formats and browsers. TonaTools does not guarantee that every tool or format will work in every environment.</p>
+<h3>Changes</h3><p>TonaTools may improve, replace or discontinue features as the service develops.</p>
+</section>
+
+<section class="info-section" id="contact">
+<h2>Contact TonaTools</h2>
+<p>For bug reports, suggestions or questions, use the public project issue page:</p>
+<p><a class="contact-link" href="https://github.com/youssefehap777-bot/tonatools/issues" target="_blank" rel="noopener noreferrer">Open TonaTools contact / issue page on GitHub</a></p>
+<p class="legal-note">Please do not post private information, passwords or sensitive files in public issues.</p>
+</section>
 </main><footer id="footer"></footer>
 <script>
+// Optional Google Sign-In configuration. Leave empty to keep the site fully account-free.
+const GOOGLE_CLIENT_ID = '';
 const I18N={
  en:{name:'English',title:'All your file tools in one place.',subtitle:'Free browser-based tools for images, video, audio, PDF and text. Files are processed on your device whenever possible.',privacy:'🔒 Privacy: files are processed locally whenever possible. Advanced AI features may download free open-source models when you use them.',footer:'Free to use • TonaTools',cats:{all:'All',image:'Images',video:'Video',audio:'Audio',pdf:'PDF',file:'Files',text:'Text'},choose:'Choose files or drag them here',any:'Any supported file',run:'Run tool',clear:'Clear',download:'Download',quality:'Quality',width:'Width',height:'Height',keep:'Keep aspect ratio',format:'Format',resize:'Resize',compress:'Compress',convert:'Convert',crop:'Crop',rotate:'Rotate',flip:'Flip',watermark:'Watermark',createPDF:'Create PDF',zip:'Create ZIP',extract:'Extract ZIP',info:'File information',frame:'Extract frame',mute:'Mute video',json:'Format JSON',base64:'Base64',qr:'QR Code',pixels:'px',seconds:'seconds',start:'Start',end:'End',text:'Text',filename:'File name',copied:'Copied',loaded:'Ready',selectFiles:'Select files first.',processing:'Processing…',translate:'Translate',summarize:'Summarize',source:'Source language',target:'Target language',generate:'Generate',paste:'Paste or type text here…',pdfText:'Extract text',merge:'Merge PDF',split:'Split PDF',page:'Page',pages:'pages',summaryNote:'Summarization uses your browser’s local AI when available.',translationNote:'Translation uses your browser’s local Translator API when available.',invalid:'Invalid input.',enterText:'Enter some text first.',language:'Language',selectLanguage:'Select language',auto:'Auto',status:'Status',textTranslate:'Translate Text',textSummary:'Summarize Text',pdfTranslate:'Translate PDF',pdfSummary:'Summarize PDF'},
  ar:{name:'العربية',title:'كل أدوات ملفاتك في مكان واحد.',subtitle:'أدوات مجانية للصور والفيديو والصوت وPDF والنصوص. تتم معالجة الملفات على جهازك كلما أمكن.',privacy:'🔒 الخصوصية: تتم معالجة الملفات محليًا قدر الإمكان. أدوات الذكاء الاصطناعي المتقدمة قد تنزّل نماذج مجانية مفتوحة المصدر عند استخدامها.',footer:'مجاني للاستخدام • TonaTools',cats:{all:'الكل',image:'الصور',video:'الفيديو',audio:'الصوت',pdf:'PDF',file:'الملفات',text:'النصوص'},choose:'اختر الملفات أو اسحبها هنا',any:'أي ملف مدعوم',run:'تشغيل الأداة',clear:'مسح',download:'تحميل',quality:'الجودة',width:'العرض',height:'الارتفاع',keep:'الحفاظ على النسبة',format:'الصيغة',resize:'تغيير الحجم',compress:'ضغط',convert:'تحويل',crop:'قص',rotate:'تدوير',flip:'عكس',watermark:'علامة مائية',createPDF:'إنشاء PDF',zip:'إنشاء ZIP',extract:'فك ZIP',info:'معلومات الملف',frame:'استخراج لقطة',mute:'كتم الفيديو',json:'تنسيق JSON',base64:'Base64',qr:'رمز QR',pixels:'بكسل',seconds:'ثانية',start:'البداية',end:'النهاية',text:'النص',filename:'اسم الملف',copied:'تم النسخ',loaded:'جاهز',selectFiles:'اختر الملفات أولًا.',processing:'جارٍ المعالجة…',translate:'ترجمة',summarize:'تلخيص',source:'لغة المصدر',target:'اللغة المستهدفة',generate:'إنشاء',paste:'الصق أو اكتب النص هنا…',pdfText:'استخراج النص',merge:'دمج PDF',split:'تقسيم PDF',page:'صفحة',pages:'صفحات',summaryNote:'التلخيص يستخدم ذكاء المتصفح المحلي عندما يكون متاحًا.',translationNote:'الترجمة تستخدم واجهة المترجم المحلية في المتصفح عندما تكون متاحة.',invalid:'إدخال غير صالح.',enterText:'اكتب بعض النص أولًا.',language:'اللغة',selectLanguage:'اختر اللغة',auto:'تلقائي',status:'الحالة',textTranslate:'ترجمة النص',textSummary:'تلخيص النص',pdfTranslate:'ترجمة PDF',pdfSummary:'تلخيص PDF'},
@@ -111,7 +184,7 @@ function render(){
  $('title').textContent=t.title;
  $('subtitle').textContent=t.subtitle;
  $('notice').textContent=t.privacy;
- $('footer').textContent=t.footer;
+ $('footer').innerHTML=`<div>${esc(t.footer)}</div><div style="margin-top:8px"><a href="#privacy" style="color:#dcd7ff">Privacy</a> · <a href="#cookies" style="color:#dcd7ff">Cookies</a> · <a href="#terms" style="color:#dcd7ff">Terms</a> · <a href="#contact" style="color:#dcd7ff">Contact</a> · <a href="#faq" style="color:#dcd7ff">FAQ</a></div>`;
  document.title='TonaTools — '+t.title;
  $('lang').innerHTML=Object.entries(I18N).map(([k,v])=>`<option value="${k}">${v.name}</option>`).join('');
  $('lang').value=lang;
@@ -560,6 +633,7 @@ async function runPDF(){
 }
 
 $('lang').onchange=e=>{lang=e.target.value;render()};
+if(GOOGLE_CLIENT_ID && $('google-signin-placeholder')){ $('google-signin-placeholder').disabled=false; $('google-signin-placeholder').textContent='Sign in with Google'; }
 render();
 </script>
 </body>
