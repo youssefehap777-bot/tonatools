@@ -74,18 +74,20 @@ footer{margin-top:45px!important;padding-top:34px!important;color:#8793ad}footer
 /* Real page-style navigation */
 .page-hidden{display:none!important}
 .topbar{position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
-.menu-wrap{position:relative;display:inline-block}.menu-btn{border:1px solid var(--border);background:var(--panel);color:var(--text);border-radius:10px;padding:9px 11px;cursor:pointer;font-size:18px}.menu-panel{display:none;position:absolute;right:0;top:46px;width:220px;padding:8px;background:var(--panel);border:1px solid var(--border);border-radius:14px;box-shadow:0 18px 40px rgba(0,0,0,.3)}.menu-panel.open{display:grid}.menu-panel a{padding:11px 12px;border-radius:9px;color:var(--text);text-decoration:none}.menu-panel a:hover{background:rgba(124,58,237,.12)}.page-head{padding:28px 0 10px}.page-head h1{font-size:38px;margin:0 0 8px}.page-head p{color:var(--muted);max-width:760px;line-height:1.65}.settings-card{max-width:760px}.settings-row{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--border)}.settings-row:last-child{border-bottom:0}.settings-row select{background:var(--bg);color:var(--text);border:1px solid var(--border);padding:9px;border-radius:9px}
+.menu-wrap{position:relative;display:inline-block}.menu-btn{border:1px solid var(--border);background:var(--panel);color:var(--text);border-radius:10px;padding:9px 11px;cursor:pointer;font-size:18px}
+.menu-btn{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px}.menu-btn span{display:block;width:18px;height:2px;border-radius:2px;background:currentColor}
+.menu-panel{display:none;position:absolute;right:0;top:46px;width:220px;padding:8px;background:var(--panel);border:1px solid var(--border);border-radius:14px;box-shadow:0 18px 40px rgba(0,0,0,.3)}.menu-panel.open{display:grid}.menu-panel a{padding:11px 12px;border-radius:9px;color:var(--text);text-decoration:none}.menu-panel a:hover{background:rgba(124,58,237,.12)}.page-head{padding:28px 0 10px}.page-head h1{font-size:38px;margin:0 0 8px}.page-head p{color:var(--muted);max-width:760px;line-height:1.65}.settings-card{max-width:760px}.settings-row{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--border)}.settings-row:last-child{border-bottom:0}.settings-row select{background:var(--bg);color:var(--text);border:1px solid var(--border);padding:9px;border-radius:9px}
 @media(max-width:760px){.site-nav{gap:2px}.site-nav .nav-main:nth-child(n+4){display:none}.header-actions{gap:6px}.page-head h1{font-size:31px}}
 </style>
 </head>
 <body>
 <a class="skip-link" href="#tools">Skip to tools</a>
 <header class="topbar">
-  <div class="brand"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 36 36" role="img"><rect x="1" y="1" width="34" height="34" rx="10" fill="currentColor" opacity=".12"/><path d="M9 10h18v5h-6.5v12h-5V15H9z" fill="currentColor"/></svg></span>Tona<span>Tools</span></div>
+  <a class="brand" href="#home" aria-label="TonaTools Home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 36 36" role="img"><rect x="1" y="1" width="34" height="34" rx="10" fill="currentColor" opacity=".12"/><path d="M9 10h18v5h-6.5v12h-5V15H9z" fill="currentColor"/></svg></span>Tona<span>Tools</span></a>
   <nav class="site-nav" aria-label="Site navigation">
     <a class="nav-main" href="#home">Home</a><a class="nav-main" href="#tools">Tools</a><a class="nav-main" href="#about">About</a><a class="nav-main" href="#faq">FAQ</a><a class="nav-main" href="#contact">Contact</a>
   </nav>
-  <div class="header-actions"><a class="account-link" href="#account">Account</a><div class="menu-wrap"><button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button><div class="menu-panel" id="menuPanel"><a href="#settings">⚙ Settings</a><a href="#privacy">🔒 Privacy</a><a href="#cookies">🍪 Cookies</a><a href="#terms">📄 Terms</a></div></div><select id="lang" aria-label="Language"></select></div>
+  <div class="header-actions"><a class="account-link" href="#account">Account</a><div class="menu-wrap"><button class="menu-btn" id="menuBtn" aria-label="Open menu"><span></span><span></span><span></span></button><div class="menu-panel" id="menuPanel"><a href="#settings">⚙ Settings</a><a href="#privacy">🔒 Privacy</a><a href="#cookies">🍪 Cookies</a><a href="#terms">📄 Terms</a></div></div><select id="lang" aria-label="Language"></select></div>
 </header>
 <main>
 <section id="home" aria-label="Home">
@@ -228,12 +230,12 @@ Object.assign(I18N,EXTRA_LANGS);
 Object.values(I18N).forEach(x=>Object.assign(x,{textCount:x.textCount||'Text Counter',textCase:x.textCase||'Text Case',textClean:x.textClean||'Clean Text',words:x.words||'Words',characters:x.characters||'Characters',lines:x.lines||'Lines',upper:x.upper||'UPPERCASE',lower:x.lower||'lowercase',titleCase:x.titleCase||'Title Case',clean:x.clean||'Clean'}));
 
 const TOOLS=[
-['img-compress','image','🗜️','compressImage','Reduce image file size.'],['img-resize','image','📐','resizeImage','Change image dimensions.'],['img-convert','image','🔄','convertImage','JPG, PNG or WebP.'],['img-watermark','image','©️','watermarkImage','Add a text watermark.'],['img-pdf','image','🖼️','imagesPDF','Combine images into PDF.'],['pdf-images','image','🗂️','pdfImages','Convert PDF pages to images.'],
+['img-compress','image','🗜️','compressImage','Reduce image file size.'],['img-favicon','image','⭐','imageFavicon','Convert an image into a favicon PNG.'],['img-resize','image','📐','resizeImage','Change image dimensions.'],['img-convert','image','🔄','convertImage','JPG, PNG or WebP.'],['img-watermark','image','©️','watermarkImage','Add a text watermark.'],['img-pdf','image','🖼️','imagesPDF','Combine images into PDF.'],['pdf-images','image','🗂️','pdfImages','Convert PDF pages to images.'],
 ['video-frame','video','📸','videoFrame','Save a video frame as an image.'],['video-convert','video','🔁','videoConvert','Convert supported video files to WebM.'],['video-mute','video','🔇','videoMute','Create a muted WebM when supported.'],
 
-['pdf-create','pdf','📄','createPDF','Create PDF from images.'],['pdf-text','pdf','📑','pdfText','Extract text from PDF.'],['pdf-translate','pdf','🌐','pdfTranslate','Translate extracted PDF text.'],['pdf-summary','pdf','✨','pdfSummary','Summarize extracted PDF text.'],['pdf-merge','pdf','🧩','mergePDF','Merge multiple PDFs.'],['pdf-split','pdf','✂️','splitPDF','Extract selected PDF pages.'],
+['pdf-create','pdf','📄','createPDF','Create PDF from images.'],['pdf-text','pdf','📑','pdfText','Extract text from PDF.'],['pdf-translate','pdf','🌐','pdfTranslate','Translate extracted PDF text.'],['pdf-merge','pdf','🧩','mergePDF','Merge multiple PDFs.'],['pdf-split','pdf','✂️','splitPDF','Extract selected PDF pages.'],
 ['audio-convert','audio','🎚️','audioConvert','Convert browser-supported audio to WAV.'],['audio-compress','audio','📉','audioCompress','Reduce WAV audio size by lowering sample rate.'],['zip-create','file','📦','zipCreate','Bundle files into ZIP.'],['zip-extract','file','🗂️','zipExtract','Extract files from ZIP.'],
-['json','text','{ }','json','Format and validate JSON.'],['base64','text','🔐','base64','Encode or decode text.'],['qr','text','▦','qr','Create a QR code from text.'],['text-summary','text','✨','textSummary','Summarize text locally when supported.'],['text-count','text','🔢','textCount','Count words, characters and lines.'],['text-case','text','Aa','textCase','Change text case.'],['text-clean','text','🧹','textClean','Remove duplicate and empty lines.']
+['json','text','{ }','json','Format and validate JSON.'],['base64','text','🔐','base64','Encode or decode text.'],['qr','text','▦','qr','Create a QR code from text.'],['text-count','text','🔢','textCount','Count words, characters and lines.'],['text-case','text','Aa','textCase','Change text case.'],['text-clean','text','🧹','textClean','Remove duplicate and empty lines.']
 ];
 
 const TT={
@@ -253,7 +255,7 @@ const EXTRA_TT={
  tr:{compressImage:'Görseli sıkıştır',resizeImage:'Görseli boyutlandır',convertImage:'Görseli dönüştür',cropImage:'Görseli kırp',editImage:'Döndür / Çevir',watermarkImage:'Filigran',imagesPDF:'Görsellerden PDF',videoInfo:'Video bilgileri',videoFrame:'Video karesi',videoMute:'Videoyu sessize al',audioInfo:'Ses bilgileri',createPDF:'PDF oluştur',pdfText:'PDF metni',pdfTranslate:'PDF çevir',pdfSummary:'PDF özetle',mergePDF:'PDF birleştir',zipCreate:'ZIP oluştur',zipExtract:'ZIP çıkar',fileInfo:'Dosya bilgileri',json:'JSON biçimlendirici',base64:'Base64',qr:'QR Kodu',textTranslate:'Metni çevir',textSummary:'Metni özetle'},
  ru:{compressImage:'Сжать изображение',resizeImage:'Изменить размер',convertImage:'Конвертировать изображение',cropImage:'Обрезать изображение',editImage:'Повернуть / Отразить',watermarkImage:'Водяной знак',imagesPDF:'Изображения в PDF',videoInfo:'Информация о видео',videoFrame:'Кадр видео',videoMute:'Отключить звук',audioInfo:'Информация об аудио',createPDF:'Создать PDF',pdfText:'PDF в текст',pdfTranslate:'Перевести PDF',pdfSummary:'Суммировать PDF',mergePDF:'Объединить PDF',zipCreate:'Создать ZIP',zipExtract:'Распаковать ZIP',fileInfo:'Информация о файле',json:'Форматтер JSON',base64:'Base64',qr:'QR-код',textTranslate:'Перевести текст',textSummary:'Суммировать текст'},
  zh:{compressImage:'压缩图片',resizeImage:'调整图片大小',convertImage:'转换图片',cropImage:'裁剪图片',editImage:'旋转 / 翻转',watermarkImage:'图片水印',imagesPDF:'图片转 PDF',videoInfo:'视频信息',videoFrame:'视频画面',videoMute:'视频静音',audioInfo:'音频信息',createPDF:'创建 PDF',pdfText:'PDF 转文本',pdfTranslate:'翻译 PDF',pdfSummary:'摘要 PDF',mergePDF:'合并 PDF',zipCreate:'创建 ZIP',zipExtract:'解压 ZIP',fileInfo:'文件信息',json:'JSON 格式化',base64:'Base64',qr:'二维码',textTranslate:'翻译文本',textSummary:'文本摘要'},
- ja:{compressImage:'画像を圧縮',resizeImage:'画像サイズ変更',convertImage:'画像を変換',cropImage:'画像を切り抜き',editImage:'回転 / 反転',watermarkImage:'透かし',imagesPDF:'画像をPDFに',videoInfo:'動画情報',videoFrame:'動画フレーム',videoMute:'動画をミュート',audioInfo:'音声情報',createPDF:'PDFを作成',pdfText:'PDFをテキストに',pdfTranslate:'PDFを翻訳',pdfSummary:'PDFを要約',mergePDF:'PDFを結合',zipCreate:'ZIPを作成',zipExtract:'ZIPを解凍',fileInfo:'ファイル情報',json:'JSON整形',base64:'Base64',qr:'QRコード',textTranslate:'テキストを翻訳',textSummary:'テキストを要約'}
+ ja:{compressImage:'画像を圧縮',resizeImage:'画像サイズ変更',convertImage:'画像を変換',cropImage:'画像を切り抜き',editImage:'回転 / 反転',watermarkImage:'透かし',imagesPDF:'画像をPDFに',videoInfo:'動画情報',videoFrame:'動画フレーム',videoMute:'動画をミュート',audioInfo:'音声情報',createPDF:'PDFを作成',pdfText:'PDFをテキストに',pdfTranslate:'PDFを翻訳',pdfSummary:'PDFを要約',mergePDF:'PDFを結合',zipCreate:'ZIPを作成',zipExtract:'ZIPを解凍',fileInfo:'ファイル情報',json:'JSON整形',base64:'Base64',qr:'QRコード',textTranslate:'テキストを翻訳',textSummary:'テキストを要約'},imageFavicon:{en:'Image to Favicon',ar:'تحويل الصورة إلى Favicon',es:'Convertir imagen a Favicon',fr:'Convertir une image en favicon',de:'Bild zu Favicon',it:'Immagine in Favicon',pt:'Imagem para Favicon',tr:'Görseli Favicon’a dönüştür',ru:'Изображение в Favicon',zh:'图片转 Favicon',ja:'画像をFaviconに変換'}
 };
 Object.entries(EXTRA_TT).forEach(([k,v])=>Object.entries(v).forEach(([id,val])=>{TT[id]??={};TT[id][k]=val}));
 
@@ -335,20 +337,20 @@ function blobCanvas(c,t,q){return new Promise((res,rej)=>c.toBlob(b=>b?res(b):re
 function wireActive(){
  if(active==='video-convert'&&$('vconvfmt')){
   const supported=m=>typeof MediaRecorder!=='undefined'&&MediaRecorder.isTypeSupported(m);
-  [['vp9Opt','video/webm;codecs=vp9,opus'],['vp8Opt','video/webm;codecs=vp8,opus'],['webmOpt','video/webm'],['mp4Opt','video/mp4']].forEach(([id,m])=>{const o=$(id);if(o)o.hidden=!supported(m)});
+  [['vp9Opt','video/webm;codecs=vp9,opus'],['webmOpt','video/webm'],['mp4Opt','video/mp4']].forEach(([id,m])=>{const o=$(id);if(o)o.hidden=!supported(m)});
   const sel=$('vconvfmt');const first=[...sel.options].find(o=>!o.hidden);if(first)sel.value=first.value;
 }
 if(active==='audio-convert'&&$('awebmOpt'))$('awebmOpt').hidden=!(typeof MediaRecorder!=='undefined'&&MediaRecorder.isTypeSupported('audio/webm;codecs=opus'));
 
  const b=$('run');
  if(b){
-  if(['img-compress','img-resize','img-convert','img-watermark','img-pdf','pdf-create'].includes(active)) b.onclick=()=>runImage();
+  if(['img-compress','img-favicon','img-resize','img-convert','img-watermark','img-pdf','pdf-create'].includes(active)) b.onclick=()=>runImage();
   else if(active==='pdf-images') b.onclick=()=>runPDFImages();
   else if(['video-gif','video-compress','video-convert'].includes(active)) b.onclick=()=>runVideoExtra();
   else if(['audio-convert','audio-compress'].includes(active)) b.onclick=()=>runAudioTool();
   else if(active==='video-frame') b.onclick=()=>runFrame();
   else if(active==='video-mute') b.onclick=()=>runMute();
-  else if(['pdf-text','pdf-translate','pdf-summary','pdf-merge','pdf-split'].includes(active)) b.onclick=()=>runPDF();
+  else if(['pdf-text','pdf-translate','pdf-merge','pdf-split'].includes(active)) b.onclick=()=>runPDF();
   else if(active==='zip-create') b.onclick=()=>runZip();
   else if(active==='zip-extract') b.onclick=()=>runUnzip();
   else if(active==='json') b.onclick=()=>runJSON();
@@ -366,19 +368,20 @@ if(active==='audio-convert'&&$('awebmOpt'))$('awebmOpt').hidden=!(typeof MediaRe
 function renderWorkspace(){
  const t=L(), title=k=>toolTitle(k); 
  if(active==='img-compress')return panel('🗜️ '+title('compressImage'),toolDesc('compressImage'),dropHTML('image/*')+`<div class="controls"><label class="field">${t.quality} <input id="q" type="range" min="20" max="95" value="75"><b id="qv">75%</b></label><button id="run">${t.compress}</button></div><div id="results" class="results"></div>`);
+ if(active==='img-favicon')return panel('⭐ '+title('imageFavicon'),toolDesc('imageFavicon'),dropHTML('image/*',false)+`<div class="controls"><label class="field">Size <select id="favSize"><option>16</option><option>32</option><option>48</option><option selected>64</option><option>128</option><option>256</option></select> px</label><label class="check"><input id="favBg" type="checkbox"> White background</label><button id="run">Create Favicon</button></div><div class="status">Creates a square PNG favicon and keeps the image inside the canvas.</div><div id="results" class="results"></div>`);
  if(active==='img-resize')return panel('📐 '+title('resizeImage'),toolDesc('resizeImage'),dropHTML('image/*',false)+`<div class="controls"><label class="field">${t.width} <input id="w" type="number" min="1"></label><label class="field">${t.height} <input id="h" type="number" min="1"></label><label class="check"><input id="keep" type="checkbox" checked>${t.keep}</label><button id="run">${t.resize}</button></div><div id="results" class="results"></div>`);
  if(active==='img-convert')return panel('🔄 '+title('convertImage'),toolDesc('convertImage'),dropHTML('image/*',false)+`<div class="controls"><label class="field">${t.format} <select id="fmt"><option value="image/jpeg">JPG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select></label><label class="field">${t.quality} <input id="cq" type="range" min="20" max="100" value="90"><b id="cqv">90%</b></label><button id="run">${t.convert}</button></div><div id="results" class="results"></div>`);
  if(active==='img-watermark')return panel('©️ '+title('watermarkImage'),toolDesc('watermarkImage'),dropHTML('image/*',false)+`<div class="controls"><label class="field">${t.text} <input id="wm" type="text" placeholder="TonaTools"></label><label class="field">Color <input id="wc" type="color" value="#ffffff"></label><label class="field">Size <input id="ws" type="number" min="8" max="300" value="42"></label><button id="run">${t.watermark}</button></div><div id="results" class="results"></div>`);
  if(active==='img-pdf'||active==='pdf-create')return panel('📄 '+title('imagesPDF'),toolDesc('imagesPDF'),dropHTML('image/*')+`<div class="controls"><button id="run">${t.createPDF}</button></div><div id="results" class="results"></div>`);
  if(active==='video-frame')return panel('📸 '+title('videoFrame'),toolDesc('videoFrame'),dropHTML('video/*',false)+`<div class="controls"><label class="field">${t.seconds} <input id="vt" type="number" min="0" step="0.1" value="0"></label><button id="run">${t.frame}</button></div><div id="results" class="results"></div>`);
- if(active==='video-convert')return panel('🔁 '+title('videoConvert'),toolDesc('videoConvert'),dropHTML('video/*',false)+`<div class="controls"><label class="field">Output <select id="vconvfmt"><option value="video/webm;codecs=vp9,opus" id="vp9Opt">WebM (VP9 + Opus)</option><option value="video/webm;codecs=vp8,opus" id="vp8Opt">WebM (VP8 + Opus)</option><option value="video/webm" id="webmOpt">WebM (browser default)</option><option value="video/mp4" id="mp4Opt">MP4</option></select></label><button id="run">${t.convert}</button></div><div class="status">Only formats supported by this browser are offered. Audio is preserved when the browser exposes an audio track.</div><div id="results" class="results"></div>`);
+ if(active==='video-convert')return panel('🔁 '+title('videoConvert'),toolDesc('videoConvert'),dropHTML('video/*',false)+`<div class="controls"><label class="field">Output <select id="vconvfmt"><option value="video/webm;codecs=vp9,opus" id="vp9Opt">WebM (VP9 + Opus)</option><option value="video/webm" id="webmOpt">WebM (browser default)</option><option value="video/mp4" id="mp4Opt">MP4</option></select></label><button id="run">${t.convert}</button></div><div class="status">Only formats supported by this browser are offered. Audio is preserved when the browser exposes an audio track.</div><div id="results" class="results"></div>`);
  if(active==='video-mute')return panel('🔇 '+title('videoMute'),toolDesc('videoMute'),dropHTML('video/*',false)+`<div class="controls"><button id="run">${t.mute}</button></div><div id="results" class="results"></div>`);
  if(active==='video-gif')return panel('🎞️ '+title('videoGIF'),toolDesc('videoGIF'),dropHTML('video/*',false)+`<div class="controls"><label class="field">Start <input id="gifStart" type="number" min="0" step="0.1" value="0"></label><label class="field">End <input id="gifEnd" type="number" min="0" step="0.1" value="3"></label><label class="field">FPS <select id="gifFps"><option selected>6</option><option>8</option><option>10</option></select></label><button id="run">${t.generate}</button></div><div class="status">Short clips only; GIFs can become very large.</div><div id="results" class="results"></div>`);
  if(active==='video-compress')return panel('📦 '+title('videoCompress'),toolDesc('videoCompress'),dropHTML('video/*',false)+`<div class="controls"><label class="field">Width <input id="vcw" type="number" min="160" placeholder="Original"></label><label class="field">FPS <select id="vcfps"><option>15</option><option selected>24</option><option>30</option></select></label><label class="field">Bitrate <select id="vcbr"><option value="800000">800 kbps</option><option value="1500000" selected>1.5 Mbps</option><option value="2500000">2.5 Mbps</option></select></label><button id="run">${t.compress}</button></div><div id="results" class="results"></div>`);
  if(active==='audio-convert')return panel('🎚️ '+title('audioConvert'),toolDesc('audioConvert'),dropHTML('audio/*',false)+`<div class="controls"><label class="field">Format <select id="aformat"><option value="wav" selected>WAV</option><option value="webm" id="awebmOpt">WebM / Opus</option></select></label><label class="field">Sample rate <select id="asr"><option value="44100" selected>44.1 kHz</option><option value="48000">48 kHz</option><option value="22050">22.05 kHz</option></select></label><button id="run">${t.convert}</button></div><div class="status">WAV is uncompressed. WebM / Opus is offered only when this browser can create it.</div><div id="results" class="results"></div>`);
  if(active==='audio-compress')return panel('📉 '+title('audioCompress'),toolDesc('audioCompress'),dropHTML('audio/*',false)+`<div class="controls"><label class="field">Quality <select id="acbr"><option value="48000" selected>48 kbps</option><option value="64000">64 kbps</option><option value="96000">96 kbps</option></select></label><button id="run">${t.compress}</button></div><div class="status">Uses WebM / Opus through the Web Audio API when supported by this browser.</div><div id="results" class="results"></div>`);
  if(active==='pdf-images')return panel('🗂️ '+title('pdfImages'),toolDesc('pdfImages'),dropHTML('application/pdf',false)+`<div class="controls"><label class="field">Scale <select id="imgScale"><option value="1">1×</option><option value="1.5" selected>1.5×</option><option value="2">2×</option></select></label><button id="run">${t.convert}</button></div><div id="results" class="results"></div>`);
- if(active==='pdf-text'||active==='pdf-translate'||active==='pdf-summary')return panel('📑 '+title(active==='pdf-text'?'pdfText':active==='pdf-translate'?'pdfTranslate':'pdfSummary'),toolDesc(active==='pdf-text'?'pdfText':active==='pdf-translate'?'pdfTranslate':'pdfSummary'),dropHTML('application/pdf',false)+((active==='pdf-translate')?`<div class="grid2"><label class="field">${t.source}<select id="srcLang">${langOptions()}</select></label><label class="field">${t.target}<select id="tgtLang">${langOptions()}</select></label></div>`:'')+`<div class="status">${active==='pdf-summary'?t.summaryNote:active==='pdf-translate'?t.translationNote:''}</div><div class="controls"><button id="run">${active==='pdf-text'?t.pdfText:active==='pdf-translate'?t.translate:t.summarize}</button></div><div id="results" class="results"></div>`);
+ if(active==='pdf-text'||active==='pdf-translate')return panel('📑 '+title(active==='pdf-text'?'pdfText':'pdfTranslate'),toolDesc(active==='pdf-text'?'pdfText':'pdfTranslate'),dropHTML('application/pdf',false)+((active==='pdf-translate')?`<div class="grid2"><label class="field">${t.source}<select id="srcLang">${langOptions()}</select></label><label class="field">${t.target}<select id="tgtLang">${langOptions()}</select></label></div>`:'')+`<div class="status">${active==='pdf-summary'?t.summaryNote:active==='pdf-translate'?t.translationNote:''}</div><div class="controls"><button id="run">${active==='pdf-text'?t.pdfText:active==='pdf-translate'?t.translate:t.summarize}</button></div><div id="results" class="results"></div>`);
  if(active==='pdf-split')return panel('✂️ '+title('splitPDF'),toolDesc('splitPDF'),dropHTML('application/pdf',false)+`<div class="controls"><label class="field">Pages <input id="splitPages" type="text" placeholder="1,3-5"></label><button id="run">${t.split}</button></div><div id="results" class="results"></div>`);
  if(active==='pdf-merge')return panel('🧩 '+title('mergePDF'),toolDesc('mergePDF'),dropHTML('application/pdf')+`<div class="controls"><button id="run">${t.mergePDF}</button></div><div id="results" class="results"></div>`);
  if(active==='zip-create')return panel('📦 '+title('zipCreate'),toolDesc('zipCreate'),dropHTML('*/*')+`<div id="fileList"></div><div class="controls"><button id="run">${t.zip}</button></div><div id="results" class="results"></div>`);
@@ -386,7 +389,6 @@ function renderWorkspace(){
  if(active==='json')return panel('{ } '+title('json'),toolDesc('json'),`<textarea id="jt" class="text-area" placeholder='{"hello":"world"}'></textarea><div class="controls"><button id="run">${t.json}</button><button class="secondary" id="clr">${t.clear}</button></div><div id="results" class="results"></div>`);
  if(active==='base64')return panel('🔐 '+title('base64'),toolDesc('base64'),`<textarea id="bt" class="text-area" placeholder="${t.paste}"></textarea><div class="controls"><button id="enc">Encode</button><button id="dec">Decode</button></div><div id="results" class="results"></div>`);
  if(active==='qr')return panel('▦ '+title('qr'),toolDesc('qr'),`<textarea id="qt" rows="5" style="width:100%" placeholder="https://example.com"></textarea><div class="controls"><button id="run">${t.generate}</button></div><div id="results" class="results"></div>`);
- if(active==='text-summary')return panel('✨ '+title('textSummary'),toolDesc('textSummary'),`<textarea id="tt" class="text-area" placeholder="${t.paste}"></textarea><div class="status">${t.summaryNote}</div><div class="controls"><button id="run">${t.summarize}</button></div><div id="results" class="results"></div>`);
  if(active==='text-count')return panel('🔢 '+title('textCount'),toolDesc('textCount'),`<textarea id="tt" class="text-area" placeholder="${t.paste}"></textarea><div class="controls"><button id="run">${t.textCount}</button></div><div id="results" class="results"></div>`);
  if(active==='text-case')return panel('Aa '+title('textCase'),toolDesc('textCase'),`<textarea id="tt" class="text-area" placeholder="${t.paste}"></textarea><div class="controls"><select id="caseMode"><option value="upper">${t.upper}</option><option value="lower">${t.lower}</option><option value="title">${t.titleCase}</option></select><button id="run">${t.textCase}</button></div><div id="results" class="results"></div>`);
  if(active==='text-clean')return panel('🧹 '+title('textClean'),toolDesc('textClean'),`<textarea id="tt" class="text-area" placeholder="${t.paste}"></textarea><div class="controls"><button id="run">${t.clean}</button></div><div id="results" class="results"></div>`);
@@ -398,11 +400,37 @@ async function runImage(){
  if(!needFiles())return;showProgress(0);
  const t=L(),f=currentFiles[0];
  try{
-  if(active==='img-compress'){
+  if(active==='img-favicon'){
+   const f=currentFiles[0], im=await loadImage(f), size=Math.max(16,Math.min(256,+$('favSize').value||64));
+   const c=document.createElement('canvas');c.width=size;c.height=size;
+   const ctx=c.getContext('2d');
+   if($('favBg')?.checked){ctx.fillStyle='#fff';ctx.fillRect(0,0,size,size);}
+   const scale=Math.min(size/im.naturalWidth,size/im.naturalHeight);
+   const w=Math.max(1,Math.round(im.naturalWidth*scale)),h=Math.max(1,Math.round(im.naturalHeight*scale));
+   const x=Math.round((size-w)/2),y=Math.round((size-h)/2);
+   ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(im,x,y,w,h);
+   const b=await new Promise((res,rej)=>c.toBlob(x=>x?res(x):rej(new Error('Could not create the favicon.')),'image/png'));
+   const u=URL.createObjectURL(b);
+   result(`<div class="item"><img class="thumb" src="${u}"><div class="info"><div class="name">favicon-${size}x${size}.png</div><div class="meta">${fmt(b.size)} • PNG • ${size}×${size}</div></div><a class="download" download="favicon-${size}x${size}.png" href="${u}">${t.download}</a></div>`);
+  }
+  else if(active==='img-compress'){
    let out='';
+   const requested=Math.max(20,Math.min(95,+$('q').value||75));
    for(const file of currentFiles){
-    const c=await imageCanvas(file),b=await blobCanvas(c,'image/jpeg',+$('q').value/100),u=URL.createObjectURL(b);
-    out+=`<div class="item"><img class="thumb" src="${u}"><div class="info"><div class="name">${esc(file.name)}</div><div class="meta">${fmt(file.size)} → ${fmt(b.size)}</div></div><a class="download" download="compressed-${esc(file.name.replace(/\.[^.]+$/,''))}.jpg" href="${u}">${t.download}</a></div>`
+    const c=await imageCanvas(file);
+    const candidates=[];
+    const add=async(type,q,ext)=>{try{const b=await blobCanvas(c,type,q);if(b)candidates.push({b,ext,q,type})}catch(_){}};
+    await add('image/webp',requested,'webp');
+    await add('image/jpeg',requested,'jpg');
+    if(requested>50){await add('image/webp',Math.max(45,requested-10),'webp');await add('image/jpeg',Math.max(45,requested-10),'jpg');}
+    if(requested>60){await add('image/webp',Math.max(40,requested-20),'webp');await add('image/jpeg',Math.max(40,requested-20),'jpg');}
+    if(!candidates.length)throw Error(t.invalid);
+    const smaller=candidates.filter(x=>x.b.size<file.size);
+    const best=(smaller.length?smaller:candidates).reduce((a,b)=>b.b.size<a.b.size?b:a);
+    const saved=Math.max(0,(1-best.b.size/file.size)*100);
+    const u=URL.createObjectURL(best.b);
+    const note=best.b.size<file.size?`${fmt(file.size)} → ${fmt(best.b.size)} • ${saved.toFixed(0)}% smaller`:`${fmt(file.size)} → ${fmt(best.b.size)} • already near minimum`;
+    out+=`<div class="item"><img class="thumb" src="${u}"><div class="info"><div class="name">${esc(file.name)}</div><div class="meta">${note} • ${best.ext.toUpperCase()} • quality ${best.q}%</div></div><a class="download" download="compressed-${esc(file.name.replace(/\.[^.]+$/,''))}.${best.ext}" href="${u}">${t.download}</a></div>`;
    }
    result(out)
   }
