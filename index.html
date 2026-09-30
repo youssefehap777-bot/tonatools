@@ -70,6 +70,29 @@ footer{margin-top:45px!important;padding-top:34px!important;color:#8793ad}footer
 @media(max-width:1050px){.tools{grid-template-columns:repeat(3,minmax(0,1fr))}.categories{top:67px}}
 @media(max-width:820px){.tools{grid-template-columns:repeat(2,minmax(0,1fr))}.info-grid{grid-template-columns:1fr 1fr}.categories{position:relative;top:auto}}
 @media(max-width:620px){.hero{padding:58px 0 38px}.hero h1{font-size:40px}.tools{grid-template-columns:1fr}.tool{min-height:145px}.info-grid{grid-template-columns:1fr}.section-heading h2{font-size:29px}.categories{margin-bottom:18px}}
+.site-nav a.active{color:#fff;background:#18213a}
+.site-nav a.active:after{content:"";position:absolute;left:13px;right:13px;bottom:3px;height:2px;border-radius:2px;background:#7c5cff;opacity:.95}
+.site-nav a[href="#tools"]:after{opacity:0}
+.compact-tools .tool{min-height:125px;padding:14px}.compact-tools .tool .icon{width:38px;height:38px;font-size:20px;margin-bottom:8px}.progress-actions{display:flex;justify-content:center;margin-top:10px}.cancel-btn{background:#572535!important;border:1px solid #9a3d59!important;padding:8px 14px!important;font-size:12px!important}
+.output-name{display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin:14px 0}.output-name input{width:min(320px,100%)}
+.help-note{margin:12px 0;padding:12px 14px;border:1px solid #35476a;background:#101a2e;border-radius:12px;color:#aeb8cf;line-height:1.55}.help-note strong{color:#e9ecf5}.help-note a{color:#b9afff;font-weight:800;text-decoration:underline;cursor:pointer}
+.result-guide{margin:10px 0 0;padding:10px 13px;border-radius:10px;background:#101a2e;color:#aeb8cf;font-size:12px;border:1px solid #2a3958}.result-guide strong{color:#eef1f8}
+@keyframes ttFadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+body:not(.no-animations) .tool,body:not(.no-animations) .workspace,body:not(.no-animations) .info-section{animation:ttFadeUp .24s ease both}
+html[data-theme="light"] body{background:#f5f7fb;color:#172033;background-image:radial-gradient(800px 420px at 50% -180px,rgba(124,92,255,.12),transparent 72%)}
+html[data-theme="light"] .topbar{background:rgba(255,255,255,.88);border-color:#dfe5ef}
+html[data-theme="light"] .site-nav a{color:#4f5b70}html[data-theme="light"] .site-nav a.active{color:#171d2b;background:#eef0ff}
+html[data-theme="light"] .header-actions select,html[data-theme="light"] .account-link,html[data-theme="light"] .menu-btn{background:#fff;color:#172033;border-color:#d5dce8}
+html[data-theme="light"] .menu-panel{background:#fff;border-color:#d5dce8;box-shadow:0 18px 40px rgba(23,32,51,.14)}
+html[data-theme="light"] .menu-panel a{color:#172033}html[data-theme="light"] .hero p,html[data-theme="light"] .section-heading p,html[data-theme="light"] .tool p,html[data-theme="light"] .legal-note{color:#647087}
+html[data-theme="light"] .tool,html[data-theme="light"] .workspace,html[data-theme="light"] .info-section,html[data-theme="light"] .home-features>div{background:#fff;border-color:#dce3ee;box-shadow:0 12px 35px rgba(30,42,65,.07)}
+html[data-theme="light"] .tool .icon,html[data-theme="light"] .info-card,html[data-theme="light"] .drop,html[data-theme="light"] .progress-wrap,html[data-theme="light"] .help-note,html[data-theme="light"] .result-guide{background:#f7f9fc;border-color:#dbe2ed;color:#4d5970}
+html[data-theme="light"] input,html[data-theme="light"] textarea,html[data-theme="light"] select{background:#fff;color:#172033;border-color:#d4dce8}
+html[data-theme="light"] .seo-content p,html[data-theme="light"] .meta,html[data-theme="light"] .small{color:#647087}
+html[data-theme="light"] .categories{background:rgba(255,255,255,.92);border-color:#dce3ee}
+html[data-theme="light"] .cat{color:#647087}html[data-theme="light"] .cat:hover{background:#eef1f8;color:#172033}
+html[data-theme="light"] .status{background:#f7f9fc;color:#56627a;border-color:#dbe2ed}
+
  
 /* Real page-style navigation */
 .page-hidden{display:none!important}
@@ -132,9 +155,8 @@ footer{margin-top:45px!important;padding-top:34px!important;color:#8793ad}footer
 <h2>Account</h2>
 <p>TonaTools does not require an account for its core tools. Google Sign-In is optional and can be enabled when a Google OAuth client ID is configured for this website.</p>
 <div id="google-signin-area" class="info-card">
-<strong>Google Sign-In</strong>
-<p class="legal-note">The core site works without login. To activate Google Sign-In, a Google Identity Services OAuth client ID must be created for this exact website origin and inserted into the configuration below.</p>
-<button type="button" id="google-signin-placeholder" class="secondary" disabled>Google Sign-In — optional setup</button>
+<strong>Account-free by design</strong>
+<p class="legal-note">TonaTools works without an account. No inactive sign-in button is shown. If secure account features are added later, they will be introduced only when fully configured and working.</p>
 </div>
 </section>
 
@@ -181,8 +203,11 @@ footer{margin-top:45px!important;padding-top:34px!important;color:#8793ad}footer
 <h2>Settings</h2>
 <p>Customize the way TonaTools behaves on this device.</p>
 <div class="info-card settings-card">
-<div class="settings-row"><span>Theme</span><select id="theme-setting"><option value="dark">Dark</option><option value="light">Light</option><option value="system">System</option></select></div>
-<div class="settings-row"><span>Animations</span><label><input id="animation-setting" type="checkbox" checked> On</label></div>
+<div class="settings-row"><span data-setting-label="theme">Theme</span><select id="theme-setting"><option value="dark">Dark</option><option value="light">Light</option><option value="system">System</option></select></div>
+<div class="settings-row"><span data-setting-label="animations">Animations</span><label><input id="animation-setting" type="checkbox" checked> On</label></div>
+<div class="settings-row"><span data-setting-label="rememberLang">Remember language</span><label><input id="remember-language" type="checkbox" checked> On</label></div>
+<div class="settings-row"><span data-setting-label="compact">Compact tool cards</span><label><input id="compact-setting" type="checkbox"> Off</label></div>
+<div class="settings-row"><span data-setting-label="autoClear">Clear selected files after completion</span><label><input id="autoclear-setting" type="checkbox"> Off</label></div>
 </div>
 </section>
 </main><footer id="footer"></footer>
@@ -206,9 +231,13 @@ footer{margin-top:45px!important;padding-top:34px!important;color:#8793ad}footer
  document.getElementById('menuBtn')?.addEventListener('click',function(){document.getElementById('menuPanel')?.classList.toggle('open');});
  document.addEventListener('click',function(e){if(!e.target.closest('.menu-wrap')) document.getElementById('menuPanel')?.classList.remove('open');});
  const theme=document.getElementById('theme-setting');
- if(theme){const saved=localStorage.getItem('tt-theme');if(saved)theme.value=saved;theme.addEventListener('change',()=>{localStorage.setItem('tt-theme',theme.value);document.documentElement.dataset.theme=theme.value;});}
+ function applyTheme(v){document.documentElement.dataset.theme=v==='system'?(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'):v;}
+ if(theme){const saved=localStorage.getItem('tt-theme')||'system';theme.value=saved;applyTheme(saved);theme.addEventListener('change',()=>{localStorage.setItem('tt-theme',theme.value);applyTheme(theme.value);});matchMedia('(prefers-color-scheme: light)').addEventListener?.('change',()=>{if((localStorage.getItem('tt-theme')||'system')==='system')applyTheme('system')});}
  const anim=document.getElementById('animation-setting');
- if(anim) anim.addEventListener('change',()=>document.documentElement.classList.toggle('no-animations',!anim.checked));
+ if(anim){const saved=localStorage.getItem('tt-anim');if(saved!==null)anim.checked=saved==='1';document.documentElement.classList.toggle('no-animations',!anim.checked);anim.addEventListener('change',()=>{localStorage.setItem('tt-anim',anim.checked?'1':'0');document.documentElement.classList.toggle('no-animations',!anim.checked);});}
+ const rem=document.getElementById('remember-language');if(rem){const saved=localStorage.getItem('tt-remember-lang');if(saved!==null)rem.checked=saved==='1';rem.addEventListener('change',()=>localStorage.setItem('tt-remember-lang',rem.checked?'1':'0'));}
+ const compact=document.getElementById('compact-setting');if(compact){compact.checked=localStorage.getItem('tt-compact')==='1';document.documentElement.classList.toggle('compact-tools',compact.checked);compact.addEventListener('change',()=>{localStorage.setItem('tt-compact',compact.checked?'1':'0');document.documentElement.classList.toggle('compact-tools',compact.checked);});}
+ const autoc=document.getElementById('autoclear-setting');if(autoc){autoc.checked=localStorage.getItem('tt-autoclear')==='1';autoc.addEventListener('change',()=>localStorage.setItem('tt-autoclear',autoc.checked?'1':'0'));}
  renderPage();
 })();
 </script>
@@ -274,8 +303,8 @@ function toolDesc(key){if(D[lang]?.[key])return D[lang][key];const generic={de:'
 function langOptions(){const names={en:'English',ar:'العربية',es:'Español',fr:'Français',de:'Deutsch',it:'Italiano',pt:'Português',tr:'Türkçe',ru:'Русский',zh:'中文',ja:'日本語'};return Object.entries(names).map(([k,v])=>`<option value="${k}">${v}</option>`).join('')}
 
 const STATIC_TEXT={
- en:{skip:'Skip to tools',home:'Home',tools:'Tools',about:'About',faq:'FAQ',contact:'Contact',account:'Account',settings:'Settings',privacy:'Privacy',cookies:'Cookies',terms:'Terms',menu:'Open menu',badge:'✦ Free • Fast • Browser-based',explore:'Explore tools',learn:'Learn more',seoTitle:'Free online file tools',seo1:'TonaTools provides free browser-based tools for compressing, resizing and converting images, working with video and audio, creating and managing PDFs, and processing text and files.',seo2:'Your files are processed on your device whenever possible, with no signup required for the core tools.',toolsKicker:'TOOLS',toolsTitle:'Choose a tool',toolsDesc:'Simple tools for your everyday files.',aboutTitle:'About TonaTools',aboutP:'TonaTools is a free browser-based toolkit for common image, video, audio, PDF, text and file tasks. The goal is to make useful file tools simple, fast and accessible without requiring an account for the core features.',privacyFirst:'Privacy first',privacyFirstP:'Files are processed on your device whenever the selected tool supports local processing.',noSignup:'No signup for core tools',noSignupP:'You can use the main tools without creating an account.',browser:'Browser based',browserP:'Open TonaTools on a modern browser and work directly from the website.',free:'Free to use',freeP:'The core toolkit is provided without a subscription or required payment.',accountTitle:'Account',accountP:'TonaTools does not require an account for its core tools. Google Sign-In is optional and can be enabled when a Google OAuth client ID is configured for this website.',google:'Google Sign-In',googleP:'The core site works without login. To activate Google Sign-In, a Google Identity Services OAuth client ID must be created for this exact website origin and inserted into the configuration below.',googleBtn:'Google Sign-In — optional setup',faqTitle:'Frequently asked questions',faq1q:'Do I need an account?',faq1a:'No. The core TonaTools features are designed to work without signup.',faq2q:'Are my files uploaded?',faq2a:'Many tools process files locally in your browser. Some advanced tools may load browser libraries or models when required. The tool itself indicates what it needs.',faq3q:'Why can a conversion depend on my browser?',faq3a:'Some media formats depend on browser APIs such as MediaRecorder. TonaTools only offers browser-supported output options where possible.',faq4q:'Is TonaTools free?',faq4a:'The core tools are free to use. Any future third-party services or optional features will be identified clearly.',privacyTitle:'Privacy Policy',lastUpdated:'Last updated: September 2026.',privacyP:'TonaTools is designed to process files locally in the browser whenever a tool can do so. TonaTools does not require an account to use its core tools.',filesInfo:'Files and personal information',filesInfoP:'Do not upload sensitive or confidential files unless you understand how the selected browser feature processes them. TonaTools does not intentionally collect the contents of files for its core local-processing tools.',thirdParty:'Third-party resources',thirdPartyP:'Some tools may load open-source browser libraries or other third-party resources to perform a requested task. Your browser may contact those providers when such resources are loaded.',analytics:'Analytics and advertising',analyticsP:'The current core site does not require cookies for its main tools. If advertising or analytics services are added later, this policy will be updated to explain the relevant data practices and choices.',choices:'Your choices',choicesP:"You can stop using the site at any time and can clear browser data using your browser's controls.",cookiesTitle:'Cookie Policy',cookiesP1:'TonaTools core tools do not require cookies to process your files. Your browser may still store normal technical data such as cached website resources or local browser preferences.',cookiesP2:'If advertising, analytics or other third-party services are added in the future, this section will be updated to explain their use of cookies or similar technologies and any available choices.',termsTitle:'Terms of Use',termsP:'By using TonaTools, you agree to use the site lawfully and responsibly.',useTools:'Use of the tools',useToolsP:'You are responsible for the files you process and for ensuring that you have the right to use or modify them. Do not use the service for unlawful activity.',output:'Output and availability',outputP:'Browser capabilities vary by device and browser. Results may differ between formats and browsers. TonaTools does not guarantee that every tool or format will work in every environment.',changes:'Changes',changesP:'TonaTools may improve, replace or discontinue features as the service develops.',contactTitle:'Contact TonaTools',contactP:'For bug reports, suggestions or questions, use the public project issue page:',contactLink:'Open TonaTools contact / issue page on GitHub',contactNote:'Please do not post private information, passwords or sensitive files in public issues.',settingsTitle:'Settings',settingsP:'Customize the way TonaTools behaves on this device.',theme:'Theme',animations:'Animations',on:'On',dark:'Dark',light:'Light',system:'System'},
- ar:{skip:'انتقل إلى الأدوات',home:'الرئيسية',tools:'الأدوات',about:'حول الموقع',faq:'الأسئلة الشائعة',contact:'اتصل بنا',account:'الحساب',settings:'الإعدادات',privacy:'الخصوصية',cookies:'ملفات الارتباط',terms:'الشروط',menu:'فتح القائمة',badge:'✦ مجاني • سريع • يعمل من المتصفح',explore:'استكشف الأدوات',learn:'اعرف المزيد',seoTitle:'أدوات ملفات مجانية أونلاين',seo1:'يوفر TonaTools أدوات مجانية من المتصفح لضغط الصور وتغيير حجمها وتحويلها، والعمل مع الفيديو والصوت، وإنشاء وإدارة ملفات PDF، ومعالجة النصوص والملفات.',seo2:'تتم معالجة ملفاتك على جهازك كلما أمكن، ولا تحتاج إلى إنشاء حساب لاستخدام الأدوات الأساسية.',toolsKicker:'الأدوات',toolsTitle:'اختر أداة',toolsDesc:'أدوات بسيطة لملفاتك اليومية.',aboutTitle:'عن TonaTools',aboutP:'TonaTools مجموعة مجانية تعمل من المتصفح للمهام الشائعة الخاصة بالصور والفيديو والصوت وPDF والنصوص والملفات. هدفنا جعل أدوات الملفات مفيدة وبسيطة وسريعة ومتاحة دون الحاجة إلى حساب للأدوات الأساسية.',privacyFirst:'الخصوصية أولًا',privacyFirstP:'تتم معالجة الملفات على جهازك عندما تدعم الأداة المختارة المعالجة المحلية.',noSignup:'لا تحتاج حسابًا للأدوات الأساسية',noSignupP:'يمكنك استخدام الأدوات الأساسية دون إنشاء حساب.',browser:'يعمل من المتصفح',browserP:'افتح TonaTools من متصفح حديث واعمل مباشرة من الموقع.',free:'مجاني للاستخدام',freeP:'المجموعة الأساسية متاحة دون اشتراك أو دفع إلزامي.',accountTitle:'الحساب',accountP:'لا يحتاج TonaTools إلى حساب لاستخدام الأدوات الأساسية. تسجيل الدخول بحساب Google اختياري ويمكن تفعيله عند إعداد معرّف OAuth للموقع.',google:'تسجيل الدخول بحساب Google',googleP:'الموقع الأساسي يعمل بدون تسجيل دخول. لتفعيل تسجيل الدخول بحساب Google يجب إنشاء OAuth Client ID لهذا النطاق وإضافته إلى إعدادات الموقع.',googleBtn:'تسجيل الدخول بحساب Google — إعداد اختياري',faqTitle:'الأسئلة الشائعة',faq1q:'هل أحتاج إلى حساب؟',faq1a:'لا. صُممت الأدوات الأساسية في TonaTools للعمل بدون تسجيل.',faq2q:'هل يتم رفع ملفاتي؟',faq2a:'تعالج أدوات كثيرة الملفات محليًا داخل المتصفح. بعض الأدوات المتقدمة قد تحمل مكتبات أو نماذج عند الحاجة، وتوضح الأداة ما تحتاجه.',faq3q:'لماذا قد يعتمد التحويل على المتصفح؟',faq3a:'بعض صيغ الوسائط تعتمد على إمكانيات المتصفح مثل MediaRecorder، لذلك يعرض TonaTools صيغ الإخراج التي يدعمها المتصفح قدر الإمكان.',faq4q:'هل TonaTools مجاني؟',faq4a:'الأدوات الأساسية مجانية. وأي خدمات خارجية أو ميزات اختيارية مستقبلية سيتم توضيحها.',privacyTitle:'سياسة الخصوصية',lastUpdated:'آخر تحديث: سبتمبر 2026.',privacyP:'تم تصميم TonaTools لمعالجة الملفات محليًا داخل المتصفح عندما تسمح الأداة بذلك. ولا يتطلب حسابًا لاستخدام الأدوات الأساسية.',filesInfo:'الملفات والمعلومات الشخصية',filesInfoP:'لا ترفع ملفات حساسة أو سرية إلا إذا كنت تعرف كيف تعالجها ميزة المتصفح المختارة. لا يجمع TonaTools محتوى الملفات عمدًا في أدوات المعالجة المحلية الأساسية.',thirdParty:'موارد الطرف الثالث',thirdPartyP:'قد تحمل بعض الأدوات مكتبات مفتوحة المصدر أو موارد خارجية لتنفيذ المهمة المطلوبة. وقد يتصل المتصفح بهذه الجهات عند تحميل تلك الموارد.',analytics:'التحليلات والإعلانات',analyticsP:'الموقع الأساسي حاليًا لا يحتاج إلى ملفات ارتباط لأدواته الرئيسية. إذا أضيفت خدمات إعلانية أو تحليلية لاحقًا فسيتم تحديث هذه السياسة.',choices:'اختياراتك',choicesP:'يمكنك التوقف عن استخدام الموقع في أي وقت ومسح بيانات المتصفح من إعدادات متصفحك.',cookiesTitle:'سياسة ملفات الارتباط',cookiesP1:'لا تحتاج أدوات TonaTools الأساسية إلى ملفات ارتباط لمعالجة ملفاتك. وقد يخزن المتصفح بيانات تقنية عادية مثل الموارد المؤقتة أو تفضيلات الموقع.',cookiesP2:'إذا أضيفت إعلانات أو تحليلات أو خدمات خارجية مستقبلًا فسيتم تحديث هذا القسم لشرح استخدامها والخيارات المتاحة.',termsTitle:'شروط الاستخدام',termsP:'باستخدام TonaTools، توافق على استخدام الموقع بطريقة قانونية ومسؤولة.',useTools:'استخدام الأدوات',useToolsP:'أنت مسؤول عن الملفات التي تعالجها وعن امتلاكك الحق في استخدامها أو تعديلها. لا تستخدم الخدمة في أنشطة غير قانونية.',output:'المخرجات والتوافر',outputP:'تختلف إمكانيات المتصفحات والأجهزة. وقد تختلف النتائج بين الصيغ والمتصفحات. لا يضمن TonaTools عمل كل أداة أو صيغة في كل بيئة.',changes:'التغييرات',changesP:'قد يطور TonaTools الميزات أو يستبدلها أو يوقف بعضها مع تطور الخدمة.',contactTitle:'اتصل بـ TonaTools',contactP:'للإبلاغ عن الأخطاء أو إرسال الاقتراحات والأسئلة، استخدم صفحة المشروع العامة:',contactLink:'فتح صفحة التواصل / المشاكل على GitHub',contactNote:'يرجى عدم نشر معلومات خاصة أو كلمات مرور أو ملفات حساسة في المشاكل العامة.',settingsTitle:'الإعدادات',settingsP:'خصص طريقة عمل TonaTools على هذا الجهاز.',theme:'المظهر',animations:'الحركات',on:'تشغيل',dark:'داكن',light:'فاتح',system:'النظام'},
+ en:{skip:'Skip to tools',home:'Home',tools:'Tools',about:'About',faq:'FAQ',contact:'Contact',account:'Account',settings:'Settings',privacy:'Privacy',cookies:'Cookies',terms:'Terms',menu:'Open menu',badge:'✦ Free • Fast • Browser-based',explore:'Explore tools',learn:'Learn more',seoTitle:'Free online file tools',seo1:'TonaTools provides free browser-based tools for compressing, resizing and converting images, working with video and audio, creating and managing PDFs, and processing text and files.',seo2:'Your files are processed on your device whenever possible, with no signup required for the core tools.',toolsKicker:'TOOLS',toolsTitle:'Choose a tool',toolsDesc:'Simple tools for your everyday files.',aboutTitle:'About TonaTools',aboutP:'TonaTools is a free browser-based toolkit for common image, video, audio, PDF, text and file tasks. The goal is to make useful file tools simple, fast and accessible without requiring an account for the core features.',privacyFirst:'Privacy first',privacyFirstP:'Files are processed on your device whenever the selected tool supports local processing.',noSignup:'No signup for core tools',noSignupP:'You can use the main tools without creating an account.',browser:'Browser based',browserP:'Open TonaTools on a modern browser and work directly from the website.',free:'Free to use',freeP:'The core toolkit is provided without a subscription or required payment.',accountTitle:'Account',accountP:'TonaTools does not require an account for its core tools. Google Sign-In is optional and can be enabled when a Google OAuth client ID is configured for this website.',google:'Google Sign-In',googleP:'The core site works without login. To activate Google Sign-In, a Google Identity Services OAuth client ID must be created for this exact website origin and inserted into the configuration below.',googleBtn:'Google Sign-In — optional setup',faqTitle:'Frequently asked questions',faq1q:'Do I need an account?',faq1a:'No. The core TonaTools features are designed to work without signup.',faq2q:'Are my files uploaded?',faq2a:'Many tools process files locally in your browser. Some advanced tools may load browser libraries or models when required. The tool itself indicates what it needs.',faq3q:'Why can a conversion depend on my browser?',faq3a:'Some media formats depend on browser APIs such as MediaRecorder. TonaTools only offers browser-supported output options where possible.',faq4q:'Is TonaTools free?',faq4a:'The core tools are free to use. Any future third-party services or optional features will be identified clearly.',privacyTitle:'Privacy Policy',lastUpdated:'Last updated: September 2026.',privacyP:'TonaTools is designed to process files locally in the browser whenever a tool can do so. TonaTools does not require an account to use its core tools.',filesInfo:'Files and personal information',filesInfoP:'Do not upload sensitive or confidential files unless you understand how the selected browser feature processes them. TonaTools does not intentionally collect the contents of files for its core local-processing tools.',thirdParty:'Third-party resources',thirdPartyP:'Some tools may load open-source browser libraries or other third-party resources to perform a requested task. Your browser may contact those providers when such resources are loaded.',analytics:'Analytics and advertising',analyticsP:'The current core site does not require cookies for its main tools. If advertising or analytics services are added later, this policy will be updated to explain the relevant data practices and choices.',choices:'Your choices',choicesP:"You can stop using the site at any time and can clear browser data using your browser's controls.",cookiesTitle:'Cookie Policy',cookiesP1:'TonaTools core tools do not require cookies to process your files. Your browser may still store normal technical data such as cached website resources or local browser preferences.',cookiesP2:'If advertising, analytics or other third-party services are added in the future, this section will be updated to explain their use of cookies or similar technologies and any available choices.',termsTitle:'Terms of Use',termsP:'By using TonaTools, you agree to use the site lawfully and responsibly.',useTools:'Use of the tools',useToolsP:'You are responsible for the files you process and for ensuring that you have the right to use or modify them. Do not use the service for unlawful activity.',output:'Output and availability',outputP:'Browser capabilities vary by device and browser. Results may differ between formats and browsers. TonaTools does not guarantee that every tool or format will work in every environment.',changes:'Changes',changesP:'TonaTools may improve, replace or discontinue features as the service develops.',contactTitle:'Contact TonaTools',contactP:'For bug reports, suggestions or questions, use the public project issue page:',contactLink:'Open TonaTools contact / issue page on GitHub',contactNote:'Please do not post private information, passwords or sensitive files in public issues.',settingsTitle:'Settings',settingsP:'Customize the way TonaTools behaves on this device.',theme:'Theme',animations:'Animations',on:'On',off:'Off',dark:'Dark',light:'Light',system:'System',rememberLang:'Remember language',compact:'Compact tool cards',autoClear:'Clear selected files after completion',downloadGuide:'Download your result below.',copyGuide:'Copy the result below.',cancel:'Cancel',compressHelp:'If the image is not getting smaller, convert it to JPG or PNG first.',goConvert:'Convert this image',zipGuide:'Download the ZIP, then extract it to get the images.',pdfName:'PDF name',optional:'Optional',defaultName:'If you leave this blank, an automatic name will be used.',qrDownload:'Download QR',pdfGuide:'Download the ZIP and extract it to get the PNG images.'},
+ ar:{skip:'انتقل إلى الأدوات',home:'الرئيسية',tools:'الأدوات',about:'حول الموقع',faq:'الأسئلة الشائعة',contact:'اتصل بنا',account:'الحساب',settings:'الإعدادات',privacy:'الخصوصية',cookies:'ملفات الارتباط',terms:'الشروط',menu:'فتح القائمة',badge:'✦ مجاني • سريع • يعمل من المتصفح',explore:'استكشف الأدوات',learn:'اعرف المزيد',seoTitle:'أدوات ملفات مجانية أونلاين',seo1:'يوفر TonaTools أدوات مجانية من المتصفح لضغط الصور وتغيير حجمها وتحويلها، والعمل مع الفيديو والصوت، وإنشاء وإدارة ملفات PDF، ومعالجة النصوص والملفات.',seo2:'تتم معالجة ملفاتك على جهازك كلما أمكن، ولا تحتاج إلى إنشاء حساب لاستخدام الأدوات الأساسية.',toolsKicker:'الأدوات',toolsTitle:'اختر أداة',toolsDesc:'أدوات بسيطة لملفاتك اليومية.',aboutTitle:'عن TonaTools',aboutP:'TonaTools مجموعة مجانية تعمل من المتصفح للمهام الشائعة الخاصة بالصور والفيديو والصوت وPDF والنصوص والملفات. هدفنا جعل أدوات الملفات مفيدة وبسيطة وسريعة ومتاحة دون الحاجة إلى حساب للأدوات الأساسية.',privacyFirst:'الخصوصية أولًا',privacyFirstP:'تتم معالجة الملفات على جهازك عندما تدعم الأداة المختارة المعالجة المحلية.',noSignup:'لا تحتاج حسابًا للأدوات الأساسية',noSignupP:'يمكنك استخدام الأدوات الأساسية دون إنشاء حساب.',browser:'يعمل من المتصفح',browserP:'افتح TonaTools من متصفح حديث واعمل مباشرة من الموقع.',free:'مجاني للاستخدام',freeP:'المجموعة الأساسية متاحة دون اشتراك أو دفع إلزامي.',accountTitle:'الحساب',accountP:'لا يحتاج TonaTools إلى حساب لاستخدام الأدوات الأساسية. تسجيل الدخول بحساب Google اختياري ويمكن تفعيله عند إعداد معرّف OAuth للموقع.',google:'تسجيل الدخول بحساب Google',googleP:'الموقع الأساسي يعمل بدون تسجيل دخول. لتفعيل تسجيل الدخول بحساب Google يجب إنشاء OAuth Client ID لهذا النطاق وإضافته إلى إعدادات الموقع.',googleBtn:'تسجيل الدخول بحساب Google — إعداد اختياري',faqTitle:'الأسئلة الشائعة',faq1q:'هل أحتاج إلى حساب؟',faq1a:'لا. صُممت الأدوات الأساسية في TonaTools للعمل بدون تسجيل.',faq2q:'هل يتم رفع ملفاتي؟',faq2a:'تعالج أدوات كثيرة الملفات محليًا داخل المتصفح. بعض الأدوات المتقدمة قد تحمل مكتبات أو نماذج عند الحاجة، وتوضح الأداة ما تحتاجه.',faq3q:'لماذا قد يعتمد التحويل على المتصفح؟',faq3a:'بعض صيغ الوسائط تعتمد على إمكانيات المتصفح مثل MediaRecorder، لذلك يعرض TonaTools صيغ الإخراج التي يدعمها المتصفح قدر الإمكان.',faq4q:'هل TonaTools مجاني؟',faq4a:'الأدوات الأساسية مجانية. وأي خدمات خارجية أو ميزات اختيارية مستقبلية سيتم توضيحها.',privacyTitle:'سياسة الخصوصية',lastUpdated:'آخر تحديث: سبتمبر 2026.',privacyP:'تم تصميم TonaTools لمعالجة الملفات محليًا داخل المتصفح عندما تسمح الأداة بذلك. ولا يتطلب حسابًا لاستخدام الأدوات الأساسية.',filesInfo:'الملفات والمعلومات الشخصية',filesInfoP:'لا ترفع ملفات حساسة أو سرية إلا إذا كنت تعرف كيف تعالجها ميزة المتصفح المختارة. لا يجمع TonaTools محتوى الملفات عمدًا في أدوات المعالجة المحلية الأساسية.',thirdParty:'موارد الطرف الثالث',thirdPartyP:'قد تحمل بعض الأدوات مكتبات مفتوحة المصدر أو موارد خارجية لتنفيذ المهمة المطلوبة. وقد يتصل المتصفح بهذه الجهات عند تحميل تلك الموارد.',analytics:'التحليلات والإعلانات',analyticsP:'الموقع الأساسي حاليًا لا يحتاج إلى ملفات ارتباط لأدواته الرئيسية. إذا أضيفت خدمات إعلانية أو تحليلية لاحقًا فسيتم تحديث هذه السياسة.',choices:'اختياراتك',choicesP:'يمكنك التوقف عن استخدام الموقع في أي وقت ومسح بيانات المتصفح من إعدادات متصفحك.',cookiesTitle:'سياسة ملفات الارتباط',cookiesP1:'لا تحتاج أدوات TonaTools الأساسية إلى ملفات ارتباط لمعالجة ملفاتك. وقد يخزن المتصفح بيانات تقنية عادية مثل الموارد المؤقتة أو تفضيلات الموقع.',cookiesP2:'إذا أضيفت إعلانات أو تحليلات أو خدمات خارجية مستقبلًا فسيتم تحديث هذا القسم لشرح استخدامها والخيارات المتاحة.',termsTitle:'شروط الاستخدام',termsP:'باستخدام TonaTools، توافق على استخدام الموقع بطريقة قانونية ومسؤولة.',useTools:'استخدام الأدوات',useToolsP:'أنت مسؤول عن الملفات التي تعالجها وعن امتلاكك الحق في استخدامها أو تعديلها. لا تستخدم الخدمة في أنشطة غير قانونية.',output:'المخرجات والتوافر',outputP:'تختلف إمكانيات المتصفحات والأجهزة. وقد تختلف النتائج بين الصيغ والمتصفحات. لا يضمن TonaTools عمل كل أداة أو صيغة في كل بيئة.',changes:'التغييرات',changesP:'قد يطور TonaTools الميزات أو يستبدلها أو يوقف بعضها مع تطور الخدمة.',contactTitle:'اتصل بـ TonaTools',contactP:'للإبلاغ عن الأخطاء أو إرسال الاقتراحات والأسئلة، استخدم صفحة المشروع العامة:',contactLink:'فتح صفحة التواصل / المشاكل على GitHub',contactNote:'يرجى عدم نشر معلومات خاصة أو كلمات مرور أو ملفات حساسة في المشاكل العامة.',settingsTitle:'الإعدادات',settingsP:'خصص طريقة عمل TonaTools على هذا الجهاز.',theme:'المظهر',animations:'الحركات',on:'تشغيل',off:'إيقاف',dark:'داكن',light:'فاتح',system:'النظام',rememberLang:'حفظ اللغة',compact:'بطاقات أدوات مضغوطة',autoClear:'مسح الملفات المختارة بعد الانتهاء',downloadGuide:'حمّل النتيجة من الزر بالأسفل.',copyGuide:'انسخ النتيجة من الأسفل.',cancel:'إلغاء',compressHelp:'لو الصورة مش بتصغر، حوّلها إلى JPG أو PNG الأول.',goConvert:'تحويل الصورة',zipGuide:'حمّل ملف ZIP ثم فك الضغط لاستخراج الصور.',pdfName:'اسم ملف PDF',optional:'اختياري',defaultName:'لو سيبت الخانة فاضية، هيتم استخدام اسم تلقائي.',qrDownload:'تحميل QR',pdfGuide:'حمّل ملف ZIP وفك الضغط لاستخراج صور PNG.'},
  es:{name:'Español'},fr:{name:'Français'},de:{name:'Deutsch'},it:{name:'Italiano'},pt:{name:'Português'},tr:{name:'Türkçe'},ru:{name:'Русский'},zh:{name:'中文'},ja:{name:'日本語'}
 };
 // For languages whose full page copy is not listed above, keep the complete site readable
@@ -296,7 +325,7 @@ function setStaticText(){
  set('#cookies h2','cookiesTitle');set('#cookies p:nth-of-type(1)','cookiesP1');set('#cookies p:nth-of-type(2)','cookiesP2');
  set('#terms h2','termsTitle');set('#terms>p','termsP');[['useTools','useToolsP'],['output','outputP'],['changes','changesP']].forEach((pair,i)=>{const h=document.querySelectorAll('#terms h3')[i],p=document.querySelectorAll('#terms h3+p')[i];if(h)h.textContent=t[pair[0]];if(p)p.textContent=t[pair[1]];});
  set('#contact h2','contactTitle');set('#contact>p:first-of-type','contactP');set('#contact .contact-link','contactLink');set('#contact .legal-note','contactNote');
- set('#settings h2','settingsTitle');set('#settings>p','settingsP');if($('#theme-setting')?.parentElement?.querySelector('span')) $('#theme-setting').parentElement.querySelector('span').textContent=t.theme;if($('#animation-setting')?.parentElement?.firstChild) $('#animation-setting').parentElement.firstChild.textContent=t.animations+' ';const opts=$('#theme-setting')?.options;if(opts){opts[0].textContent=t.dark;opts[1].textContent=t.light;opts[2].textContent=t.system;}if($('#animation-setting'))$('#animation-setting').parentElement.lastChild.textContent=' '+t.on;
+ set('#settings h2','settingsTitle');set('#settings>p','settingsP');const sl={theme:'theme',animations:'animations',rememberLang:'rememberLang',compact:'compact',autoClear:'autoClear'};Object.entries(sl).forEach(([k,v])=>{const el=document.querySelector(`[data-setting-label=\"${k}\"]`);if(el)el.textContent=t[v]||STATIC_BASE[v]||k});const opts=$('#theme-setting')?.options;if(opts){opts[0].textContent=t.dark;opts[1].textContent=t.light;opts[2].textContent=t.system;}document.querySelectorAll('.settings-row label').forEach(l=>{const cb=l.querySelector('input');if(cb){const on=cb.id==='animation-setting'||cb.id==='remember-language';l.lastChild.textContent=' '+(on?t.on:t.off)}});
 }
 
 function render(){
@@ -307,17 +336,17 @@ function render(){
  $('title').textContent=t.title;
  $('subtitle').textContent=t.subtitle;
  $('notice').textContent=t.privacy;
- $('footer').innerHTML=`<div style="font-weight:900;color:#e9ecf5;font-size:15px">TonaTools</div><div style="margin-top:7px">${esc(t.footer)}</div><div style="margin-top:12px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap"><a href="#privacy" style="color:#aeb8cf">Privacy</a><a href="#cookies" style="color:#aeb8cf">Cookies</a><a href="#terms" style="color:#aeb8cf">Terms</a><a href="#contact" style="color:#aeb8cf">Contact</a><a href="#faq" style="color:#aeb8cf">FAQ</a></div>`;
+ $('footer').innerHTML=`<div style="font-weight:900;color:#e9ecf5;font-size:15px">TonaTools</div><div style="margin-top:7px">${esc(t.footer)}</div><div style="margin-top:12px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap"><a href="#privacy" style="color:#aeb8cf">${esc(t.privacy)}</a><a href="#cookies" style="color:#aeb8cf">${esc(t.cookies)}</a><a href="#terms" style="color:#aeb8cf">${esc(t.terms)}</a><a href="#contact" style="color:#aeb8cf">${esc(t.contact)}</a><a href="#faq" style="color:#aeb8cf">${esc(t.faq)}</a></div>`;
  document.title='TonaTools — '+t.title;
  $('lang').innerHTML=Object.entries(I18N).map(([k,v])=>`<option value="${k}">${v.name}</option>`).join('');
  $('lang').value=lang;
  $('categories').innerHTML=Object.entries(t.cats).map(([k,v])=>`<button class="cat ${filter===k?'active':''}" data-cat="${k}">${v}</button>`).join('');
  const q=toolSearch.trim().toLowerCase();
  const visibleTools=TOOLS.filter(x=>filter==='all'||x[1]===filter).filter(x=>!q||toolTitle(x[3]).toLowerCase().includes(q)||toolDesc(x[3]).toLowerCase().includes(q)||x[0].toLowerCase().includes(q));
- $('tools').innerHTML=visibleTools.length?visibleTools.map(x=>`<article class="tool ${active===x[0]?'active':''}" data-tool="${x[0]}"><div class="icon">${x[2]}</div><h3>${toolTitle(x[3])}</h3><p>${toolDesc(x[3])}</p></article>`).join(''):`<div class="empty-tools">No tools found. Try another search or choose a category.</div>`;
- $('toolCount').textContent=`${visibleTools.length} tool${visibleTools.length===1?'':'s'}`;
+ $('tools').innerHTML=visibleTools.length?visibleTools.map(x=>`<article class="tool ${active===x[0]?'active':''}" data-tool="${x[0]}"><div class="icon">${x[2]}</div><h3>${toolTitle(x[3])}</h3><p>${toolDesc(x[3])}</p></article>`).join(''):`<div class="empty-tools">${esc(lang==='ar'?'لم يتم العثور على أدوات. جرّب بحثًا آخر أو اختر تصنيفًا.':'No tools found. Try another search or choose a category.')}</div>`;
+ $('toolCount').textContent=lang==='ar'?`${visibleTools.length} ${visibleTools.length===1?'أداة':'أدوات'}`:`${visibleTools.length} ${visibleTools.length===1?'tool':'tools'}`;
  const popular=['img-compress','img-convert','pdf-merge','pdf-text','video-mute','audio-compress','zip-create','qr'];
- $('popularRow').innerHTML=`<span class="popular-label">POPULAR</span>`+popular.map(id=>{const x=TOOLS.find(t=>t[0]===id);return x?`<button type="button" class="popular-tool ${active===id?'active':''}" data-popular="${id}">${x[2]} ${esc(toolTitle(x[3]))}</button>`:''}).join('');
+ $('popularRow').innerHTML=`<span class="popular-label">${lang==='ar'?'الأكثر استخدامًا':'POPULAR'}</span>`+popular.map(id=>{const x=TOOLS.find(t=>t[0]===id);return x?`<button type="button" class="popular-tool ${active===id?'active':''}" data-popular="${id}">${x[2]} ${esc(toolTitle(x[3]))}</button>`:''}).join('');
  document.querySelectorAll('.cat').forEach(b=>b.onclick=()=>{filter=b.dataset.cat;render()});
  document.querySelectorAll('.tool').forEach(b=>b.onclick=()=>{active=b.dataset.tool;render();setTimeout(()=>document.getElementById('workspace')?.scrollIntoView({behavior:'smooth',block:'start'}),30)});
  document.querySelectorAll('.popular-tool').forEach(b=>b.onclick=()=>{active=b.dataset.popular;filter='all';toolSearch='';render();setTimeout(()=>document.getElementById('workspace')?.scrollIntoView({behavior:'smooth',block:'start'}),30)});
@@ -326,15 +355,17 @@ function render(){
 }
 
 function dropHTML(accept='*/*',multiple=true){const t=L();return `<label class="drop" id="drop" for="picker"><strong>${t.choose}</strong><small>${accept==='*/*'?t.any:accept}</small><input id="picker" type="file" accept="${accept}" ${multiple?'multiple':''}></label>`}
-function panel(title,desc,body){$('workspace').innerHTML=`<h2>${title}</h2><p>${desc||''}</p>${body}`;wireDrop();wireActive()}
+function panel(title,desc,body){const fileTools=['img-favicon','img-resize','img-convert','img-watermark','img-pdf','pdf-create','pdf-images','video-frame','video-convert','video-mute','pdf-translate','pdf-merge','pdf-split','audio-convert','audio-compress','zip-create','zip-extract','qr'];const nameBox=fileTools.includes(active)?`<div class="output-name"><label class="field">${esc(L().filename||'File name')} <span class="small">(${esc(L().optional||'Optional')})</span><input id="outputName" type="text" placeholder="${esc(L().defaultName||'Automatic name')}"></label></div>`:'';$('workspace').innerHTML=`<h2>${title}</h2><p>${desc||''}</p>${nameBox}${body}`;wireDrop();wireActive()}
+function outName(ext,fallback){let n=$('outputName')?.value?.trim();if(!n)n=fallback||'TonaTools';n=n.replace(/[\\/:*?"<>|]+/g,'-').trim()||'TonaTools';n=n.replace(/\.[^.]+$/,'');return `${n}.${ext}`}
 function wireDrop(){const d=$('drop');if(!d)return;d.ondragover=e=>{e.preventDefault();d.classList.add('drag')};d.ondragleave=()=>d.classList.remove('drag');d.ondrop=e=>{e.preventDefault();d.classList.remove('drag');setFiles(e.dataTransfer.files)};const p=$('picker');if(p)p.onchange=e=>setFiles(e.target.files)}
 function setFiles(list){currentFiles=[...list];if($('fileList'))$('fileList').innerHTML=currentFiles.map(f=>`<div class="item"><div class="info"><div class="name">${esc(f.name)}</div><div class="meta">${esc(f.type||'unknown')} • ${fmt(f.size)}</div></div></div>`).join('')}
 function needFiles(){if(!currentFiles.length){alert(L().selectFiles);return false}return true}
-let progressPulse=false;
-function result(h){if(progressPulse){progressPulse=false;setProgress(100);setTimeout(()=>{$('results').innerHTML=h},140)}else $('results').innerHTML=h}
-function showProgress(p=0,label=L().processing){progressPulse=false;$('results').innerHTML=`<div class="progress-wrap"><div class="progress-label"><span>${esc(label)}</span><b id="progressPct">${Math.round(p)}%</b></div><div class="progress-track"><div id="progressFill" class="progress-fill" style="width:${Math.max(0,Math.min(100,p))}%"></div></div></div>`}
-function setProgress(p,label=L().processing){const pct=Math.max(0,Math.min(100,Math.round(p)));if($('progressPct'))$('progressPct').textContent=pct+'%';if($('progressFill'))$('progressFill').style.width=pct+'%';if($('progressFill')?.parentElement?.previousElementSibling?.firstElementChild)$('progressFill').parentElement.previousElementSibling.firstElementChild.textContent=label}
-function finishProgress(){setProgress(100)}
+let progressPulse=false,cancelRequested=false,currentCancelFn=null;
+function cancelOperation(){cancelRequested=true;try{currentCancelFn?.()}catch(_){ }if($('results'))$('results').innerHTML=`<div class="status">${esc(L().cancel||'Cancel')}</div>`;currentCancelFn=null}
+function result(h){if(cancelRequested){cancelRequested=false;currentCancelFn=null;$('results').innerHTML=`<div class="status">${esc(L().cancel||'Cancel')}</div>`;return}if(progressPulse){progressPulse=false;setProgress(100);setTimeout(()=>{$('results').innerHTML=h},140)}else $('results').innerHTML=h;currentCancelFn=null}
+function showProgress(p=0,label=L().processing){cancelRequested=false;progressPulse=false;$('results').innerHTML=`<div class="progress-wrap"><div class="progress-label"><span>${esc(label)}</span><b id="progressPct">${Math.round(p)}%</b></div><div class="progress-track"><div id="progressFill" class="progress-fill" style="width:${Math.max(0,Math.min(100,p))}%"></div></div><div class="progress-actions"><button type="button" class="cancel-btn" onclick="cancelOperation()">${esc(L().cancel||'Cancel')}</button></div></div>`}
+function setProgress(p,label=L().processing){if(cancelRequested)return;const pct=Math.max(0,Math.min(100,Math.round(p)));if($('progressPct'))$('progressPct').textContent=pct+'%';if($('progressFill'))$('progressFill').style.width=pct+'%';if($('progressFill')?.parentElement?.previousElementSibling?.firstElementChild)$('progressFill').parentElement.previousElementSibling.firstElementChild.textContent=label}
+function finishProgress(){if(!cancelRequested)setProgress(100)}
 function clearFiles(){currentFiles=[];if($('results'))$('results').innerHTML='';if($('fileList'))$('fileList').innerHTML=''}
 
 function loadScript(src,global){if(window[global])return Promise.resolve();return new Promise((res,rej)=>{const s=document.createElement('script');s.src=src;s.onload=res;s.onerror=()=>rej(new Error('Library failed to load'));document.head.appendChild(s)})}
@@ -386,7 +417,7 @@ function renderWorkspace(){
  if(active==='img-watermark')return panel('©️ '+title('watermarkImage'),toolDesc('watermarkImage'),dropHTML('image/*',false)+`<div class="controls"><label class="field">${t.text} <input id="wm" type="text" placeholder="TonaTools"></label><label class="field">Color <input id="wc" type="color" value="#ffffff"></label><label class="field">Size <input id="ws" type="number" min="8" max="300" value="42"></label><button id="run">${t.watermark}</button></div><div id="results" class="results"></div>`);
  if(active==='img-pdf'||active==='pdf-create')return panel('📄 '+title('imagesPDF'),toolDesc('imagesPDF'),dropHTML('image/*')+`<div class="controls"><button id="run">${t.createPDF}</button></div><div id="results" class="results"></div>`);
  if(active==='video-frame')return panel('📸 '+title('videoFrame'),toolDesc('videoFrame'),dropHTML('video/*',false)+`<div class="controls"><label class="field">${t.seconds} <input id="vt" type="number" min="0" step="0.1" value="0"></label><button id="run">${t.frame}</button></div><div id="results" class="results"></div>`);
- if(active==='video-convert')return panel('🔁 '+title('videoConvert'),toolDesc('videoConvert'),dropHTML('video/*',false)+`<div class="controls"><label class="field">Output <select id="vconvfmt"><option value="video/webm;codecs=vp9,opus" id="vp9Opt">WebM (VP9 + Opus)</option><option value="video/webm" id="webmOpt">WebM (browser default)</option><option value="video/mp4" id="mp4Opt">MP4</option></select></label><button id="run">${t.convert}</button></div><div class="status">Only formats supported by this browser are offered. Audio is preserved when the browser exposes an audio track.</div><div id="results" class="results"></div>`);
+ if(active==='video-convert')return panel('🔁 '+title('videoConvert'),toolDesc('videoConvert'),dropHTML('video/*',false)+`<div class="controls"><label class="field">Output <select id="vconvfmt"><option value="video/webm;codecs=vp9,opus" id="vp9Opt">WebM (VP9 + Opus)</option><option value="video/webm" id="webmOpt">WebM (browser default)</option><option value="video/mp4" id="mp4Opt">MP4</option></select></label><button id="run">${t.convert}</button></div><div class="status">${lang==='ar'?'تظهر فقط الصيغ التي يدعمها المتصفح. يتم الحفاظ على الصوت عندما يتيحه المتصفح.':'Only formats supported by this browser are offered. Audio is preserved when the browser exposes an audio track.'}</div><div id="results" class="results"></div>`);
  if(active==='video-mute')return panel('🔇 '+title('videoMute'),toolDesc('videoMute'),dropHTML('video/*',false)+`<div class="controls"><button id="run">${t.mute}</button></div><div id="results" class="results"></div>`);
  if(active==='video-gif')return panel('🎞️ '+title('videoGIF'),toolDesc('videoGIF'),dropHTML('video/*',false)+`<div class="controls"><label class="field">Start <input id="gifStart" type="number" min="0" step="0.1" value="0"></label><label class="field">End <input id="gifEnd" type="number" min="0" step="0.1" value="3"></label><label class="field">FPS <select id="gifFps"><option selected>6</option><option>8</option><option>10</option></select></label><button id="run">${t.generate}</button></div><div class="status">Short clips only; GIFs can become very large.</div><div id="results" class="results"></div>`);
  if(active==='video-compress')return panel('📦 '+title('videoCompress'),toolDesc('videoCompress'),dropHTML('video/*',false)+`<div class="controls"><label class="field">Width <input id="vcw" type="number" min="160" placeholder="Original"></label><label class="field">FPS <select id="vcfps"><option>15</option><option selected>24</option><option>30</option></select></label><label class="field">Bitrate <select id="vcbr"><option value="800000">800 kbps</option><option value="1500000" selected>1.5 Mbps</option><option value="2500000">2.5 Mbps</option></select></label><button id="run">${t.compress}</button></div><div id="results" class="results"></div>`);
@@ -423,12 +454,13 @@ async function runImage(){
    ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(im,x,y,w,h);
    const b=await new Promise((res,rej)=>c.toBlob(x=>x?res(x):rej(new Error('Could not create the favicon.')),'image/png'));
    const u=URL.createObjectURL(b);
-   result(`<div class="item"><img class="thumb" src="${u}"><div class="info"><div class="name">favicon-${size}x${size}.png</div><div class="meta">${fmt(b.size)} • PNG • ${size}×${size}</div></div><a class="download" download="favicon-${size}x${size}.png" href="${u}">${t.download}</a></div>`);
+   result(`<div class="item"><img class="thumb" src="${u}"><div class="info"><div class="name">favicon-${size}x${size}.png</div><div class="meta">${fmt(b.size)} • PNG • ${size}×${size}</div></div><a class="download" download="${esc(outName('png',`favicon-${size}x${size}`))}" href="${u}">${t.download}</a></div>`);
   }
   else if(active==='img-compress'){
    let out='';
    const requested=Math.max(20,Math.min(95,+$('q').value||75));
    for(const file of currentFiles){
+    if(cancelRequested)throw Error(L().cancel||'Cancel');
     const c=await imageCanvas(file);
     const candidates=[];
     const add=async(type,q,ext)=>{try{const b=await blobCanvas(c,type,q);if(b)candidates.push({b,ext,q,type})}catch(_){}};
@@ -441,10 +473,12 @@ async function runImage(){
     const best=(smaller.length?smaller:candidates).reduce((a,b)=>b.b.size<a.b.size?b:a);
     const saved=Math.max(0,(1-best.b.size/file.size)*100);
     const u=URL.createObjectURL(best.b);
-    const note=best.b.size<file.size?`${fmt(file.size)} → ${fmt(best.b.size)} • ${saved.toFixed(0)}% smaller`:`${fmt(file.size)} → ${fmt(best.b.size)} • already near minimum`;
-    out+=`<div class="item"><img class="thumb" src="${u}"><div class="info"><div class="name">${esc(file.name)}</div><div class="meta">${note} • ${best.ext.toUpperCase()} • quality ${best.q}%</div></div><a class="download" download="compressed-${esc(file.name.replace(/\.[^.]+$/,''))}.${best.ext}" href="${u}">${t.download}</a></div>`;
+    const note=best.b.size<file.size?`${fmt(file.size)} → ${fmt(best.b.size)} • ${saved.toFixed(0)}% smaller`:`${fmt(file.size)} → ${fmt(best.b.size)} • ${lang==='ar'?'الحجم لم ينخفض':'size did not decrease'}`;
+    const originalExt=(file.name.split('.').pop()||'').toLowerCase();
+    const help=best.b.size>=file.size?`<div class="help-note"><strong>${esc(t.compressHelp||'If the image is not getting smaller, convert it to JPG or PNG first.')}</strong> <a href="#tools" data-go-convert="1">${esc(t.goConvert||'Convert this image')}</a></div>`:'';
+    out+=`<div class="item"><img class="thumb" src="${u}"><div class="info"><div class="name">${esc(file.name)}</div><div class="meta">${note} • ${best.ext.toUpperCase()} • quality ${best.q}%</div></div><a class="download" download="${esc(outName(best.ext,'compressed-'+file.name.replace(/\.[^.]+$/,'')))}" href="${u}">${t.download}</a></div>${help}`;
    }
-   result(out)
+   result(out);document.querySelectorAll('[data-go-convert]').forEach(a=>a.onclick=e=>{e.preventDefault();const source=currentFiles.find(x=>x===f)||f;active='img-convert';render();setTimeout(()=>{currentFiles=[source];setFiles(currentFiles)},30);});
   }
   else if(active==='img-resize'){
    const im=await loadImage(f);
@@ -456,19 +490,19 @@ async function runImage(){
    if(!w||!h)throw Error(t.invalid);
    const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(im,0,0,w,h);
    const b=await blobCanvas(c,'image/png'),u=URL.createObjectURL(b);
-   result(`<div class="item"><img class="thumb" src="${u}"><div class="info"><div class="name">${esc(f.name)}</div><div class="meta">${w}×${h}</div></div><a class="download" download="resized.png" href="${u}">${t.download}</a></div>`)
+   result(`<div class="item"><img class="thumb" src="${u}"><div class="info"><div class="name">${esc(f.name)}</div><div class="meta">${w}×${h}</div></div><a class="download" download="${esc(outName('png','resized'))}" href="${u}">${t.download}</a></div>`)
   }
   else if(active==='img-convert'){
    const im=await loadImage(f),c=document.createElement('canvas');c.width=im.naturalWidth;c.height=im.naturalHeight;c.getContext('2d').drawImage(im,0,0);
    const type=$('fmt').value,b=await blobCanvas(c,type,+$('cq').value/100),ext=type.split('/')[1]==='jpeg'?'jpg':type.split('/')[1],u=URL.createObjectURL(b);
-   result(`<div class="item"><div class="info"><div class="name">${esc(f.name)}</div><div class="meta">${fmt(f.size)} → ${fmt(b.size)}</div></div><a class="download" download="converted.${ext}" href="${u}">${t.download}</a></div>`)
+   result(`<div class="item"><div class="info"><div class="name">${esc(f.name)}</div><div class="meta">${fmt(f.size)} → ${fmt(b.size)}</div></div><a class="download" download="${esc(outName(ext,'converted'))}" href="${u}">${t.download}</a></div>`)
   }
   else if(active==='img-watermark'){
    const im=await loadImage(f),c=document.createElement('canvas');c.width=im.naturalWidth;c.height=im.naturalHeight;
    const x=c.getContext('2d');x.drawImage(im,0,0);x.font=`${+$('ws').value}px sans-serif`;x.fillStyle=$('wc').value;x.globalAlpha=.75;x.textAlign='right';
    x.fillText($('wm').value||'TonaTools',c.width-25,c.height-25);
    const b=await blobCanvas(c,'image/png'),u=URL.createObjectURL(b);
-   result(`<img class="preview" src="${u}"><a class="download" download="watermarked.png" href="${u}">${t.download}</a>`)
+   result(`<img class="preview" src="${u}"><a class="download" download="${esc(outName('png','watermarked'))}" href="${u}">${t.download}</a>`)
   }
   else if(active==='img-pdf'||active==='pdf-create'){
    await loadPDFLib();
@@ -481,7 +515,7 @@ async function runImage(){
     page.drawImage(emb,{x:0,y:0,width:emb.width,height:emb.height})
    }
    const b=new Blob([await pdf.save()],{type:'application/pdf'}),u=URL.createObjectURL(b);
-   result(`<div class="item"><div class="info"><div class="name">TonaTools.pdf</div><div class="meta">${fmt(b.size)} • ${currentFiles.length}</div></div><a class="download" download="TonaTools.pdf" href="${u}">${t.download}</a></div>`)
+   result(`<div class="item"><div class="info"><div class="name">TonaTools.pdf</div><div class="meta">${fmt(b.size)} • ${currentFiles.length}</div></div><a class="download" download="${esc(outName('pdf','TonaTools'))}" href="${u}">${t.download}</a></div>`)
   }
  }catch(e){result(`<div class="status">${esc(e.message||t.invalid)}</div>`)}
 }
@@ -569,7 +603,7 @@ async function runFrame(){
   c.toBlob(b=>{
    setProgress(100);
    const u=URL.createObjectURL(b);
-   result(`<img class="preview" src="${u}"><a class="download" download="frame.jpg" href="${u}">${L().download}</a>`);
+   result(`<img class="preview" src="${u}"><a class="download" download="${esc(outName('jpg','frame'))}" href="${u}">${L().download}</a>`);
   },'image/jpeg',.92)
  }
 }
@@ -586,6 +620,7 @@ async function runMute(){
   rec.ondataavailable=e=>e.data.size&&chunks.push(e.data);
   const done=new Promise((res,rej)=>{rec.onstop=res;rec.onerror=()=>rej(new Error('Video recording failed.'))});
   function draw(){
+   if(cancelRequested){try{rec.stop()}catch(_){};return}
    if(v.ended){rec.stop();return}
    c.getContext('2d').drawImage(v,0,0,c.width,c.height);
    const pct=Math.min(99,Math.round((v.currentTime/v.duration)*100));if($('workStatus'))$('workStatus').textContent=`${L().processing} ${pct}%`;
@@ -593,7 +628,7 @@ async function runMute(){
   }
   await v.play();rec.start();draw();await done;
   const b=new Blob(chunks,{type:'video/webm'}),u=URL.createObjectURL(b);
-  result(`<div class="item"><div class="info"><div class="name">muted.webm</div><div class="meta">${fmt(b.size)}</div></div><a class="download" download="muted.webm" href="${u}">${L().download}</a></div>`);
+  result(`<div class="item"><div class="info"><div class="name">${esc(outName('webm','muted'))}</div><div class="meta">${fmt(b.size)}</div></div><a class="download" download="${esc(outName('webm','muted'))}" href="${u}">${L().download}</a></div>`);
   v.pause();URL.revokeObjectURL(v.src)
  }catch(e){result(`<div class="status">${esc(e.message||L().invalid)}</div>`)}
 }
@@ -602,9 +637,9 @@ async function runZip(){
  if(!needFiles())return;showProgress(0);
  await loadJSZip();
  const z=new JSZip();
- currentFiles.forEach(f=>z.file(f.name,f));
+ currentFiles.forEach(f=>{if(!cancelRequested)z.file(f.name,f)});if(cancelRequested)throw Error(L().cancel||'Cancel');
  const b=await z.generateAsync({type:'blob'}),u=URL.createObjectURL(b);
- result(`<div class="item"><div class="info"><div class="name">TonaTools.zip</div><div class="meta">${currentFiles.length} • ${fmt(b.size)}</div></div><a class="download" download="TonaTools.zip" href="${u}">${L().download}</a></div>`)
+ result(`<div class="item"><div class="info"><div class="name">${esc(outName('zip','TonaTools'))}</div><div class="meta">${currentFiles.length} • ${fmt(b.size)}</div></div><a class="download" download="${esc(outName('zip','TonaTools'))}" href="${u}">${L().download}</a></div>`)
 }
 
 async function runUnzip(){
@@ -629,7 +664,7 @@ async function runQR(){
  if(!$('qt').value.trim())return;showProgress(0);
  await loadQR();
  $('results').innerHTML='';
- new QRCode($('results'),{text:$('qt').value,width:256,height:256,correctLevel:QRCode.CorrectLevel.M});setProgress(100)
+ new QRCode($('results'),{text:$('qt').value,width:256,height:256,correctLevel:QRCode.CorrectLevel.M});setProgress(100);setTimeout(()=>{const canvas=$('results').querySelector('canvas'),img=$('results').querySelector('img');const src=canvas?canvas.toDataURL('image/png'):img?.src;if(src){$('results').insertAdjacentHTML('beforeend',`<div class="controls"><a class="download" href="${src}" download="${esc(outName('png','qrcode'))}">${esc(L().qrDownload||'Download QR')}</a></div>`)}} ,80)
 }
 
 function runSimpleText(){
@@ -649,7 +684,7 @@ function runSimpleText(){
   }else{
    out=text.split(/\r?\n/).filter(x=>x.trim()).filter((x,i,a)=>a.findIndex(y=>y.trim()===x.trim())===i).join('\n')
   }
-  result(`<textarea class="text-area">${esc(out)}</textarea>`)
+  result(`<textarea class="text-area">${esc(out)}</textarea><div class="result-guide">${esc(L().copyGuide||'Copy the result below.')}</div>`)
  }catch(e){result(`<div class="status">${esc(e.message)}</div>`)}
 }
 
@@ -660,7 +695,7 @@ async function runTextAI(){
   if(!text.trim())throw Error(L().enterText);
   let out;
   out=await summarizeText(text);
-  result(`<textarea class="text-area">${esc(out)}</textarea>`)
+  result(`<textarea class="text-area">${esc(out)}</textarea><div class="result-guide">${esc(L().copyGuide||'Copy the result below.')}</div>`)
  }catch(e){result(`<div class="status">${esc(e.message)}</div>`)}
 }
 
@@ -669,11 +704,11 @@ async function makeTextPDF(pages,filename){
  for(const item of pages){
   const page=out.addPage([595,842]);const c=document.createElement('canvas');c.width=1190;c.height=1684;const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);
   const rtl=/^(ar|fa|ur)(-|$)/i.test(item.lang||'');x.direction=rtl?'rtl':'ltr';x.textAlign=rtl?'right':'left';const margin=92,max=c.width-margin*2;let y=105;
-  x.fillStyle='#111';x.font='bold 34px sans-serif';x.fillText(`TonaTools • Page ${item.title?.match(/\d+/)?.[0]||item.page||''}`,rtl?c.width-margin:margin,y);y+=52;
-  x.strokeStyle='#d9deea';x.lineWidth=2;x.beginPath();x.moveTo(margin,y);x.lineTo(c.width-margin,y);x.stroke();y+=48;
+  x.fillStyle='#6f5cff';x.fillRect(margin,y-30,max,56);x.fillStyle='#fff';x.font='bold 30px sans-serif';x.fillText(`TonaTools • ${item.title||('Page '+(item.page||''))}`,rtl?c.width-margin:margin,y+6);y+=82;
+  x.strokeStyle='#d7dceb';x.lineWidth=2;x.beginPath();x.moveTo(margin,y);x.lineTo(c.width-margin,y);x.stroke();y+=44;
   x.font='25px sans-serif';x.fillStyle='#222';const blocks=(item.text||'').split(/\n+/).map(s=>s.trim()).filter(Boolean);
   for(const block of blocks){const words=block.split(/\s+/);let line='';for(const word of words){const test=line?line+' '+word:word;if(x.measureText(test).width>max&&line){if(y>c.height-125)break;x.fillText(line,rtl?c.width-margin:margin,y);y+=38;line=word}else line=test}if(line&&y<=c.height-125){x.fillText(line,rtl?c.width-margin:margin,y);y+=46}y+=12;if(y>c.height-125)break}
-  x.font='18px sans-serif';x.fillStyle='#777';x.fillText('TonaTools',rtl?c.width-margin:margin,c.height-48);
+  x.font='18px sans-serif';x.fillStyle='#7c5cff';x.fillText('TonaTools',rtl?c.width-margin:margin,c.height-48);x.fillStyle='#888';x.textAlign=rtl?'left':'right';x.fillText(`Page ${item.page||''}`,rtl?margin:c.width-margin,c.height-48);x.textAlign=rtl?'right':'left';
   const png=await new Promise((res,rej)=>c.toBlob(b=>b?res(b):rej(new Error('Could not render PDF page.')),'image/png'));const img=await out.embedPng(await png.arrayBuffer());page.drawImage(img,{x:0,y:0,width:595,height:842});
  }
  const b=new Blob([await out.save()],{type:'application/pdf'}),u=URL.createObjectURL(b);result(`<div class="item"><div class="info"><div class="name">${esc(filename)}</div><div class="meta">${fmt(b.size)} • ${pages.length} page(s) • organized layout</div></div><a class="download" href="${u}" download="${esc(filename)}">${L().download}</a></div>`)
@@ -691,8 +726,8 @@ async function makeSummaryPDF(sections,filename){
 async function runPDFImages(){
  if(!needFiles())return;showProgress(0); result(`<div class="status">${L().processing}</div>`);
  try{ await loadPDFjs(); await loadJSZip(); const pdfjs=await loadPDFjs(); const pdf=await pdfjs.getDocument({data:new Uint8Array(await currentFiles[0].arrayBuffer())}).promise; const z=new JSZip(); const scale=+$('imgScale').value||1.5;
-  for(let n=1;n<=pdf.numPages;n++){const page=await pdf.getPage(n),vp=page.getViewport({scale}),c=document.createElement('canvas');c.width=Math.ceil(vp.width);c.height=Math.ceil(vp.height);await page.render({canvasContext:c.getContext('2d'),viewport:vp}).promise;const b=await new Promise((res,rej)=>c.toBlob(x=>x?res(x):rej(new Error('Could not render page.')),'image/png'));z.file(`page-${n}.png`,b);setProgress(n/pdf.numPages*90)}
-  const b=await z.generateAsync({type:'blob'}),u=URL.createObjectURL(b); result(`<div class="item"><div class="info"><div class="name">pdf-images.zip</div><div class="meta">${fmt(b.size)}</div></div><a class="download" href="${u}" download="pdf-images.zip">${L().download}</a></div>`);
+  for(let n=1;n<=pdf.numPages;n++){if(cancelRequested)throw Error(L().cancel||'Cancel');const page=await pdf.getPage(n),vp=page.getViewport({scale}),c=document.createElement('canvas');c.width=Math.ceil(vp.width);c.height=Math.ceil(vp.height);await page.render({canvasContext:c.getContext('2d'),viewport:vp}).promise;const b=await new Promise((res,rej)=>c.toBlob(x=>x?res(x):rej(new Error('Could not render page.')),'image/png'));z.file(`page-${n}.png`,b);setProgress(n/pdf.numPages*90)}
+  const b=await z.generateAsync({type:'blob'}),u=URL.createObjectURL(b); result(`<div class="item"><div class="info"><div class="name">${esc(outName('zip','pdf-images'))}</div><div class="meta">${fmt(b.size)}</div></div><a class="download" href="${u}" download="${esc(outName('zip','pdf-images'))}">${L().download}</a></div><div class="result-guide">${esc(L().pdfGuide||'Download the ZIP and extract it to get the PNG images.')}</div>`);
  }catch(e){result(`<div class="status">${esc(e.message)}</div>`)}
 }
 
@@ -713,28 +748,27 @@ async function runVideoExtra(){
     const c=document.createElement('canvas');c.width=width;c.height=height;c.getContext('2d').drawImage(v,0,0,width,height);gif.addFrame(c,{delay:1000/fps,copy:true});count++;setProgress(count/total*65);
    }
    const b=await new Promise((res,rej)=>{let visual=65;const timer=setInterval(()=>{visual=Math.min(94,visual+1);setProgress(visual)},700);gif.on('progress',p=>setProgress(65+p*35));gif.on('finished',b=>{clearInterval(timer);res(b)});gif.on('abort',()=>{clearInterval(timer);rej(new Error('GIF creation failed.'))});gif.render()});
-   finishProgress(); const u=URL.createObjectURL(b);result(`<div class="item"><div class="info"><div class="name">clip.gif</div><div class="meta">${fmt(b.size)} • ${Math.round((end-start)*10)/10}s • ${fps} FPS</div></div><a class="download" href="${u}" download="clip.gif">${L().download}</a></div>`);
+   finishProgress(); const u=URL.createObjectURL(b);result(`<div class="item"><div class="info"><div class="name">clip.gif</div><div class="meta">${fmt(b.size)} • ${Math.round((end-start)*10)/10}s • ${fps} FPS</div></div><a class="download" href="${u}" download="${esc(outName('gif','clip'))}">${L().download}</a></div>`);
   }else if(active==='video-convert'){
    const mime=$('vconvfmt').value;
    if(typeof MediaRecorder==='undefined'||!MediaRecorder.isTypeSupported(mime))throw Error('This browser does not support the selected video format.');
-   const c=document.createElement('canvas');c.width=v.videoWidth;c.height=v.videoHeight;
-   const fps=Math.min(30,Math.max(1,v.frameRate||30));const videoStream=c.captureStream(fps);const sourceStream=v.captureStream?v.captureStream():null;
-   const audioTracks=sourceStream?sourceStream.getAudioTracks():[];const tracks=[videoStream.getVideoTracks()[0],...audioTracks];
-   const rec=new MediaRecorder(new MediaStream(tracks),{mimeType:mime,videoBitsPerSecond:2500000}),parts=[];
-   rec.ondataavailable=e=>e.data.size&&parts.push(e.data);
-   const done=new Promise((resolve,reject)=>{rec.onstop=resolve;rec.onerror=()=>reject(new Error('Video recording failed.'))});
-   const ctx=c.getContext('2d');let stopped=false;
-   const stop=()=>{if(!stopped){stopped=true;try{rec.stop()}catch(_){}}};
-   const progress=()=>{if(stopped)return;const pct=v.duration?Math.min(99,v.currentTime/v.duration*100):0;setProgress(pct);requestAnimationFrame(progress)};
-   v.currentTime=0;rec.start(250);v.onended=stop;v.muted=false;await v.play();progress();await done;finishProgress();
-   const actualType=rec.mimeType||mime;const ext=actualType.includes('mp4')?'mp4':'webm';const b=new Blob(parts,{type:actualType}),u=URL.createObjectURL(b);
-   result(`<div class="item"><div class="info"><div class="name">converted.${ext}</div><div class="meta">${fmt(b.size)} • audio ${audioTracks.length?'preserved':'not available from this browser'}</div></div><a class="download" href="${u}" download="converted.${ext}">${L().download}</a></div>`)
+   const c=document.createElement('canvas');c.width=v.videoWidth;c.height=v.videoHeight;const ctx=c.getContext('2d');
+   const fps=Math.min(30,Math.max(1,v.frameRate||30));const videoStream=c.captureStream(fps);let audioCtx=null,audioDest=null,audioSource=null;
+   try{audioCtx=new (window.AudioContext||window.webkitAudioContext)();audioDest=audioCtx.createMediaStreamDestination();audioSource=audioCtx.createMediaElementSource(v);audioSource.connect(audioDest);audioSource.connect(audioCtx.destination);if(audioCtx.state==='suspended')await audioCtx.resume()}catch(_){audioCtx=null}
+   const sourceStream=v.captureStream?v.captureStream():null;const audioTracks=audioDest?audioDest.stream.getAudioTracks():(sourceStream?sourceStream.getAudioTracks():[]);const tracks=[videoStream.getVideoTracks()[0],...audioTracks];
+   const rec=new MediaRecorder(new MediaStream(tracks),{mimeType:mime,videoBitsPerSecond:2500000}),parts=[];rec.ondataavailable=e=>e.data.size&&parts.push(e.data);
+   const done=new Promise((resolve,reject)=>{rec.onstop=resolve;rec.onerror=()=>reject(new Error('Video recording failed.'))});let stopped=false;
+   const stop=()=>{if(!stopped){stopped=true;try{rec.stop()}catch(_){}}};currentCancelFn=stop;
+   const draw=()=>{if(stopped||cancelRequested)return;ctx.drawImage(v,0,0,c.width,c.height);setProgress(v.duration?Math.min(99,v.currentTime/v.duration*100):0);requestAnimationFrame(draw)};
+   v.currentTime=0;v.muted=false;rec.start(250);v.onended=stop;await v.play();draw();await done;if(cancelRequested){if(audioCtx)try{await audioCtx.close()}catch(_){};throw Error(L().cancel||'Cancel')};finishProgress();
+   const actualType=rec.mimeType||mime;const ext=actualType.includes('mp4')?'mp4':'webm';const b=new Blob(parts,{type:actualType}),u=URL.createObjectURL(b),name=outName(ext,'converted');
+   if(audioCtx)try{await audioCtx.close()}catch(_){};result(`<div class="item"><div class="info"><div class="name">${esc(name)}</div><div class="meta">${fmt(b.size)} • ${audioTracks.length?(lang==='ar'?'الصوت محفوظ':'audio preserved'):(lang==='ar'?'الصوت غير متاح في هذا المتصفح':'audio not available from this browser')}</div></div><a class="download" href="${u}" download="${esc(name)}">${L().download}</a></div>`)
   }else{
    const target=+$('vcw').value||v.videoWidth,scale=Math.min(1,target/v.videoWidth),c=document.createElement('canvas');c.width=Math.max(160,Math.round(v.videoWidth*scale));c.height=Math.max(90,Math.round(v.videoHeight*scale));
    const fps=+$('vcfps').value||24,bitrate=+$('vcbr').value||1500000;const mime='video/webm;codecs=vp9,opus';const supported=MediaRecorder.isTypeSupported(mime)?mime:(MediaRecorder.isTypeSupported('video/webm;codecs=vp8,opus')?'video/webm;codecs=vp8,opus':'video/webm');
    const videoStream=c.captureStream(fps),sourceStream=v.captureStream?v.captureStream():null,audioTracks=sourceStream?sourceStream.getAudioTracks():[],tracks=[videoStream.getVideoTracks()[0],...audioTracks];const rec=new MediaRecorder(new MediaStream(tracks),{mimeType:supported,videoBitsPerSecond:bitrate}),parts=[];
    rec.ondataavailable=e=>e.data.size&&parts.push(e.data);const done=new Promise((resolve,reject)=>{rec.onstop=resolve;rec.onerror=()=>reject(new Error('Video recording failed.'))});let stopped=false;const stop=()=>{if(!stopped){stopped=true;try{rec.stop()}catch(_){}}};
-   v.muted=false;v.currentTime=0;rec.start(250);v.onended=stop;await v.play();const ctx=c.getContext('2d');const draw=()=>{if(stopped)return;ctx.drawImage(v,0,0,c.width,c.height);setProgress(Math.min(99,v.duration?v.currentTime/v.duration*100:0));requestAnimationFrame(draw)};draw();await done;finishProgress();const b=new Blob(parts,{type:rec.mimeType||supported}),u=URL.createObjectURL(b);result(`<div class="item"><div class="info"><div class="name">compressed.webm</div><div class="meta">${fmt(b.size)} • audio ${audioTracks.length?'preserved':'not available from this browser'}</div></div><a class="download" href="${u}" download="compressed.webm">${L().download}</a></div>`)
+   v.muted=false;v.currentTime=0;rec.start(250);v.onended=stop;await v.play();const ctx=c.getContext('2d');const draw=()=>{if(stopped)return;ctx.drawImage(v,0,0,c.width,c.height);setProgress(Math.min(99,v.duration?v.currentTime/v.duration*100:0));requestAnimationFrame(draw)};draw();await done;finishProgress();const b=new Blob(parts,{type:rec.mimeType||supported}),u=URL.createObjectURL(b);result(`<div class="item"><div class="info"><div class="name">compressed.webm</div><div class="meta">${fmt(b.size)} • audio ${audioTracks.length?'preserved':'not available from this browser'}</div></div><a class="download" href="${u}" download="${esc(outName('webm','compressed'))}">${L().download}</a></div>`)
   }
   v.pause();URL.revokeObjectURL(v.src)
  }catch(e){result(`<div class="status">${esc(e.message||L().invalid)}</div>`)}
@@ -755,12 +789,12 @@ async function runAudioTool(){
    const bitrate=active==='audio-compress'?(+$('acbr').value||48000):64000;const rec=new MediaRecorder(dest.stream,{mimeType:compressedMime,audioBitsPerSecond:bitrate}),parts=[];
    rec.ondataavailable=e=>e.data.size&&parts.push(e.data);const done=new Promise((resolve,reject)=>{rec.onstop=resolve;rec.onerror=()=>reject(new Error('Audio encoding failed.'))});
    rec.start(250);src.start();const started=performance.now();const tick=()=>{const elapsed=(performance.now()-started)/1000;setProgress(Math.min(99,buf.duration?elapsed/buf.duration*100:0));if(elapsed<buf.duration)requestAnimationFrame(tick)};tick();await new Promise(r=>setTimeout(r,Math.max(0,buf.duration*1000+150)));try{rec.stop()}catch(_){}await done;finishProgress();
-   const b=new Blob(parts,{type:rec.mimeType||compressedMime}),u=URL.createObjectURL(b),ext=compressedMime.startsWith('audio/ogg')?'ogg':'webm',name=active==='audio-compress'?`compressed.${ext}`:`converted.${ext}`;
-   await ac.close();result(`<div class="item"><div class="info"><div class="name">${name}</div><div class="meta">${fmt(f.size)} → ${fmt(b.size)} • Opus ${bitrate/1000} kbps</div></div><a class="download" href="${u}" download="${name}">${L().download}</a></div>`);URL.revokeObjectURL(url);return;
+   const b=new Blob(parts,{type:rec.mimeType||compressedMime}),u=URL.createObjectURL(b),ext=compressedMime.startsWith('audio/ogg')?'ogg':'webm',name=outName(ext,active==='audio-compress'?'compressed':'converted');
+   await ac.close();result(`<div class="item"><div class="info"><div class="name">${name}</div><div class="meta">${fmt(f.size)} → ${fmt(b.size)} • Opus ${bitrate/1000} kbps</div></div><a class="download" href="${u}" download="${esc(outName(ext,name.replace(/\.[^.]+$/,)||'converted'))}">${L().download}</a></div>`);URL.revokeObjectURL(url);return;
   }
   if(wantsCompressed&&!compressedMime)throw Error('This browser cannot create compressed audio. WAV conversion is still available.');
   const ac=new (window.AudioContext||window.webkitAudioContext)(),src=await ac.decodeAudioData(await f.arrayBuffer()),rate=+$('asr').value||44100;setProgress(20);
-  const off=new OfflineAudioContext(src.numberOfChannels,Math.ceil(src.duration*rate),rate);const bs=off.createBufferSource();bs.buffer=src;bs.connect(off.destination);bs.start();const out=await off.startRendering();setProgress(75);const b=wavBlob(out),u=URL.createObjectURL(b);await ac.close();finishProgress();result(`<div class="item"><div class="info"><div class="name">converted.wav</div><div class="meta">${fmt(f.size)} → ${fmt(b.size)} • ${rate/1000} kHz WAV (uncompressed)</div></div><a class="download" href="${u}" download="converted.wav">${L().download}</a></div>`)
+  const off=new OfflineAudioContext(src.numberOfChannels,Math.ceil(src.duration*rate),rate);const bs=off.createBufferSource();bs.buffer=src;bs.connect(off.destination);bs.start();const out=await off.startRendering();setProgress(75);const b=wavBlob(out),u=URL.createObjectURL(b);await ac.close();finishProgress();result(`<div class="item"><div class="info"><div class="name">converted.wav</div><div class="meta">${fmt(f.size)} → ${fmt(b.size)} • ${rate/1000} kHz WAV (uncompressed)</div></div><a class="download" href="${u}" download="${esc(outName('wav','converted'))}">${L().download}</a></div>`)
   URL.revokeObjectURL(url);
  }catch(e){result(`<div class="status">${esc(e.message)}</div>`)}
 }
@@ -771,16 +805,16 @@ async function runPDF(){
   if(active==='pdf-merge'){
    await loadPDFLib(); const out=await PDFLib.PDFDocument.create();
    for(const f of currentFiles){const src=await PDFLib.PDFDocument.load(await f.arrayBuffer());const pages=await out.copyPages(src,src.getPageIndices());pages.forEach(p=>out.addPage(p))}
-   const b=new Blob([await out.save()],{type:'application/pdf'}),u=URL.createObjectURL(b);return result(`<a class="download" href="${u}" download="merged.pdf">${L().download}</a>`)
+   const b=new Blob([await out.save()],{type:'application/pdf'}),u=URL.createObjectURL(b);return result(`<a class="download" href="${u}" download="${esc(outName('pdf','merged'))}">${L().download}</a><div class="result-guide">${esc(L().downloadGuide||'Download your result below.')}</div>`)
   }
   if(active==='pdf-split'){
    await loadPDFLib(); const src=await PDFLib.PDFDocument.load(await currentFiles[0].arrayBuffer()),out=await PDFLib.PDFDocument.create();
-   const spec=$('splitPages').value.trim(); if(!spec)throw Error('Enter page numbers, for example 1,3-5.'); const nums=new Set(); for(const part of spec.split(',')){const q=part.trim();if(q.includes('-')){let[a,z]=q.split('-').map(Number);for(let i=a;i<=z;i++)nums.add(i)}else nums.add(Number(q))} const idx=[...nums].filter(n=>n>=1&&n<=src.getPageCount()).map(n=>n-1); if(!idx.length)throw Error('No valid pages selected.'); const pages=await out.copyPages(src,idx);pages.forEach(p=>out.addPage(p)); const b=new Blob([await out.save()],{type:'application/pdf'}),u=URL.createObjectURL(b);return result(`<a class="download" href="${u}" download="split.pdf">${L().download}</a>`)
+   const spec=$('splitPages').value.trim(); if(!spec)throw Error('Enter page numbers, for example 1,3-5.'); const nums=new Set(); for(const part of spec.split(',')){const q=part.trim();if(q.includes('-')){let[a,z]=q.split('-').map(Number);for(let i=a;i<=z;i++)nums.add(i)}else nums.add(Number(q))} const idx=[...nums].filter(n=>n>=1&&n<=src.getPageCount()).map(n=>n-1); if(!idx.length)throw Error('No valid pages selected.'); const pages=await out.copyPages(src,idx);pages.forEach(p=>out.addPage(p)); const b=new Blob([await out.save()],{type:'application/pdf'}),u=URL.createObjectURL(b);return result(`<a class="download" href="${u}" download="${esc(outName('pdf','split'))}">${L().download}</a><div class="result-guide">${esc(L().downloadGuide||'Download your result below.')}</div>`)
   }
-  if(active==='pdf-text'){const text=await extractPDFText(currentFiles[0]);return result(`<textarea class="text-area">${esc(text)}</textarea>`)}
+  if(active==='pdf-text'){const text=await extractPDFText(currentFiles[0]);return result(`<textarea class="text-area">${esc(text)}</textarea><div class="result-guide">${esc(L().copyGuide||'Copy the result below.')}</div>`)}
   const pages=await extractPDFPages(currentFiles[0]);
   if(active==='pdf-translate'){
-   const src=$('srcLang').value,target=$('tgtLang').value,translated=[]; for(const p of pages){if(!p.text){translated.push({text:'',lang:target,title:`Page ${p.page}`});continue}translated.push({text:await translateText(p.text,src,target),lang:target,title:`Page ${p.page}`})} await makeTextPDF(translated,'translated.pdf'); return;
+   const src=$('srcLang').value,target=$('tgtLang').value,translated=[]; for(const p of pages){if(!p.text){translated.push({text:'',lang:target,title:`Page ${p.page}`});continue}translated.push({text:await translateText(p.text,src,target),lang:target,title:`Page ${p.page}`})} await makeTextPDF(translated,outName('pdf','translated')); return;
   }
   if(active==='pdf-summary'){
    const sections=[];for(const p of pages){if(!p.text)continue;sections.push({page:p.page,text:localSummarize(p.text)})} if(!sections.length)throw Error('No readable text was found in this PDF.'); await makeSummaryPDF(sections,'summary.pdf'); return;
@@ -788,7 +822,9 @@ async function runPDF(){
  }catch(e){result(`<div class="status">${esc(e.message)}</div>`)}
 }
 
-$('lang').onchange=e=>{lang=e.target.value;render()};
+$('lang').onchange=e=>{lang=e.target.value;if($('#remember-language')?.checked!==false)localStorage.setItem('tt-lang',lang);render()};
+const savedLang=localStorage.getItem('tt-lang');if(savedLang&&I18N[savedLang])lang=savedLang;
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){cancelOperation();document.getElementById('menuPanel')?.classList.remove('open');} if(e.key==='Enter'&&!e.shiftKey&&!e.ctrlKey&&!e.altKey){const el=e.target;if(el&&((el.tagName==='TEXTAREA'&&e.shiftKey)||el.tagName==='SELECT'))return;const b=document.getElementById('run');if(b&&!b.disabled&&!e.repeat){e.preventDefault();b.click();}}});
 if(GOOGLE_CLIENT_ID && $('google-signin-placeholder')){ $('google-signin-placeholder').disabled=false; $('google-signin-placeholder').textContent='Sign in with Google'; }
 render();
 </script>
